@@ -45,8 +45,8 @@
     <!-- Navigation Links -->
     <nav id="nav-links" class="hidden lg:flex space-x-6 font-poppins font-Regular ml-auto">
       <a href="#" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition">About</a>
-      <a href="#" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition">Weddings</a>
       <a href="#" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition">Contact</a>
+      <a href="#" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition">Case Studies</a>
     </nav>
   </div>
 </header>
@@ -56,44 +56,82 @@
 <!-- Main Content -->
 <main class="max-w-screen-xl mx-auto mt-6 p-4">
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    
     <!-- Hero Text -->
-    <div class="md:col-span-2 lg:col-span-2 bg-[#e4d3c3] p-4 rounded-lg">
-      <h2 class="text-3xl font-playfair font-semibold mb-4 text-[#2d2b2a]">Let’s create dance floor magic for your special day</h2>
-      <p class="text-[#7d6f5a] font-poppins">DJ Lisa is a passionate wedding DJ acclaimed for blending diverse musical genres with expert crowd-reading skills...</p>
-    </div>
+<div class="md:col-span-2 lg:col-span-2 bg-[#e4d3c3] p-6 rounded-lg">
+  <h2 class="text-3xl font-playfair font-semibold mb-4 text-[#2d2b2a]">Welcome to my world of Technology and Innovation</h2>
+  <p class="text-[#7d6f5a] font-poppins">I’m a Computer Science graduate from UKZN, currently working as a Software Engineer intern. With a deep passion for technology and problem-solving, I strive to create solutions that drive progress and innovation in the tech world. Let's explore the endless possibilities of software development and engineering together.</p>
+</div>
+
 
     <!-- Image -->
-    <div class="lg:col-span-1">
-      <img src="Images/Screenshot_2024-12-08_194622-removebg-preview.png" alt="DJ Lisa" class="w-full h-auto object-cover object-center rounded-lg border border-[#e4d3c3]">
+    <div class="lg:col-span-1 bg-[#b59a7d] p-4 rounded-lg relative overflow-hidden h-auto">
+      <img src="Images/Screenshot_2024-12-08_194622-removebg-preview.png" 
+           alt="Mthokozisi Nxumalo" 
+           class="absolute top-0 left-0 w-full h-full object-cover">
     </div>
-
+    
     <!-- Services -->
     <div class="lg:col-span-1 bg-[#e4d3c3] p-4 rounded-lg">
-      <h3 class="text-xl font-playfair font-bold mb-4 text-[#2d2b2a]">First Dance</h3>
-      <ul class="space-y-2 text-[#7d6f5a] font-poppins">
-        <li>Cocktail Hour</li>
-        <li>Dinner Music</li>
-        <li>After Party</li>
+      <h3 class="text-xl font-playfair font-bold mb-4 text-[#2d2b2a]">My Work</h3>
+      <p class="text-[#7d6f5a] font-poppins mb-8 italic">"Creativity is intelligence having fun." – Albert Einstein</p>
+      <ul class="space-y-6 text-[#7d6f5a] font-poppins">
+        <li class="group flex items-center justify-between cursor-pointer hover:text-[#9f8765] transition">
+          <span>Puzzle Game</span>
+          <span class="text-[#9f8765] group-hover:text-[#7d6f5a] transition">➔</span>
+        </li>
+        <hr class="border-t border-[#cbb49a]">
+        <li class="group flex items-center justify-between cursor-pointer hover:text-[#9f8765] transition">
+          <span>Etch to Sketch</span>
+          <span class="text-[#9f8765] group-hover:text-[#7d6f5a] transition">➔</span>
+        </li>
+        <hr class="border-t border-[#cbb49a]">
+        <li class="group flex items-center justify-between cursor-pointer hover:text-[#9f8765] transition">
+          <span>Logo Designs</span>
+          <span class="text-[#9f8765] group-hover:text-[#7d6f5a] transition">➔</span>
+        </li>
+      </ul>
+    </div>
+    
+    
+
+    <!-- Skills Panel -->
+    <div class="lg:col-span-2 md:col-span-2 bg-[#e4d3c3] p-4 rounded-lg">
+      <h3 class="text-xl font-playfair font-bold mb-4 text-[#2d2b2a]">Skills</h3>
+      <ul class="grid grid-cols-2 gap-2 text-[#7d6f5a] font-poppins">
+        <li>Python</li>
+        <li>Java</li>
+        <li>C#</li>
+        <li>REST API</li>
+        <li>GraphQL</li>
+        <li>Git</li>
+        <li>JavaScript</li>
+        <li>MongoDB</li>
+        <li>Jira</li>
       </ul>
     </div>
 
-    <!-- Contact Section -->
-    <div class="md:col-span-2 lg:col-span-2 bg-[#e4d3c3] p-4 rounded-lg flex flex-col items-center justify-center">
-      <h3 class="text-2xl font-playfair font-bold mb-4 text-[#2d2b2a]">Contact Me</h3>
-      <button class="bg-[#b69a7d] hover:bg-[#9f8765] text-white py-3 px-6 rounded-lg transition">
-        Get in Touch
-      </button>
-    </div>
+  <!-- Contact Section -->
+<div class="md:col-span-2 lg:col-span-1 bg-[#e4d3c3] p-4 rounded-lg text-center">
+  <h3 class="text-xl font-playfair font-bold mb-4 text-[#2d2b2a]">Contact Me</h3>
+  <p class="text-[#7d6f5a] font-poppins mb-4">Let’s connect and discuss your special event!</p>
+  <button class="bg-[#b69a7d] hover:bg-[#9f8765] text-white py-2 px-4 rounded-lg transition">
+    Get in Touch
+  </button>
+</div>
 
-    <!-- Social Links (now part of the main content section with rounded panel) -->
-    <div class="lg:col-span-1 md:col-span-2 bg-[#e4d3c3] p-4 rounded-lg">
-      <h3 class="text-xl font-playfair font-bold mb-4 text-[#2d2b2a]">Follow Me</h3>
-      <div class="flex space-x-6">
-        <a href="#" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition">Instagram</a>
-        <a href="#" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition">Twitter</a>
-        <a href="#" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition">Pinterest</a>
-      </div>
-    </div>
+   <!-- Social Links -->
+  <div class="lg:col-span-1 md:col-span-2 bg-[#e4d3c3] p-4 rounded-lg mb-4">
+  <h3 class="text-xl font-playfair font-bold mb-4 text-[#2d2b2a]">Follow Me</h3>
+  <div class="flex space-x-6 justify-center">
+    <a href="#" class="text-[#7d6f5a] font-poppins hover:text-[#7d6f5a] transition">Instagram</a>
+    <a href="#" class="text-[#7d6f5a] font-poppins hover:text-[#7d6f5a] transition">Twitter</a>
+    <a href="#" class="text-[#7d6f5a] font-poppins hover:text-[#7d6f5a] transition">Pinterest</a>
+  </div>
+</div>
+
+
+    
   </div>
 </main>
 

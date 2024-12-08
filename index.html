@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#eae1d7] text-[#2d2b2a]">
+
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+            playfair: ['Playfair Display', 'serif'],
+          },
+        },
+      },
+    }
+  </script>
+  
+
+ <!-- Navbar Panel -->
+ <header class="max-w-screen-xl mx-auto mt-6 border-t border-x border-[#e4d3c3] bg-[#e4d3c3] rounded-lg px-4">
+  <div class="flex justify-start items-center py-4">
+    <!-- Logo and Text -->
+    <div class="flex items-center space-x-2">
+      <img src="images/Mr CEO logo.svg" alt="Mr CEO Logo" class="h-10 max-h-10 object-contain"> 
+      <span class="font-poppins text-[#2d2b2a] text-xl font-semibold">Mr CEO</span>
+    </div>
+
+    <!-- Hamburger Icon -->
+    <div class="lg:hidden ml-auto">
+      <button id="hamburger-btn" class="text-[#2d2b2a]">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav id="nav-links" class="hidden lg:flex space-x-6 font-poppins font-Regular ml-auto">
+      <a href="#" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition">About</a>
+      <a href="#" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition">Weddings</a>
+      <a href="#" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition">Contact</a>
+    </nav>
+  </div>
+</header>
+
+
+
+<!-- Main Content -->
+<main class="max-w-screen-xl mx-auto mt-6 p-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <!-- Hero Text -->
+    <div class="md:col-span-2 lg:col-span-2 bg-[#e4d3c3] p-4 rounded-lg">
+      <h2 class="text-3xl font-playfair font-semibold mb-4 text-[#2d2b2a]">Let’s create dance floor magic for your special day</h2>
+      <p class="text-[#7d6f5a] font-poppins">DJ Lisa is a passionate wedding DJ acclaimed for blending diverse musical genres with expert crowd-reading skills...</p>
+    </div>
+
+    <!-- Image -->
+    <div class="lg:col-span-1">
+      <img src="Images/Screenshot_2024-12-08_194622-removebg-preview.png" alt="DJ Lisa" class="w-full h-auto object-cover object-center rounded-lg border border-[#e4d3c3]">
+    </div>
+
+    <!-- Services -->
+    <div class="lg:col-span-1 bg-[#e4d3c3] p-4 rounded-lg">
+      <h3 class="text-xl font-playfair font-bold mb-4 text-[#2d2b2a]">First Dance</h3>
+      <ul class="space-y-2 text-[#7d6f5a] font-poppins">
+        <li>Cocktail Hour</li>
+        <li>Dinner Music</li>
+        <li>After Party</li>
+      </ul>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="md:col-span-2 lg:col-span-2 bg-[#e4d3c3] p-4 rounded-lg flex flex-col items-center justify-center">
+      <h3 class="text-2xl font-playfair font-bold mb-4 text-[#2d2b2a]">Contact Me</h3>
+      <button class="bg-[#b69a7d] hover:bg-[#9f8765] text-white py-3 px-6 rounded-lg transition">
+        Get in Touch
+      </button>
+    </div>
+
+    <!-- Social Links (now part of the main content section with rounded panel) -->
+    <div class="lg:col-span-1 md:col-span-2 bg-[#e4d3c3] p-4 rounded-lg">
+      <h3 class="text-xl font-playfair font-bold mb-4 text-[#2d2b2a]">Follow Me</h3>
+      <div class="flex space-x-6">
+        <a href="#" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition">Instagram</a>
+        <a href="#" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition">Twitter</a>
+        <a href="#" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition">Pinterest</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+
+  <script>
+    // Toggle mobile menu visibility using querySelector
+    const hamburgerBtn = document.querySelector("#hamburger-btn");
+    const mobileMenu = document.querySelector("#mobile-menu");
+
+    hamburgerBtn.addEventListener("click", function() {
+      mobileMenu.classList.toggle("hidden");
+    });
+  </script>
+
+</body>
+</html>

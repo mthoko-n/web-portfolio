@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  
+    @keyframes shimmering {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .glowing-button {
+    position: relative;
+    padding: 1rem 2rem;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 9999px;
+    background: linear-gradient(270deg, #948a82, #7d6f5a, #bdb4ac);
+    background-size: 200% 100%;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    animation: glowing-border 3s infinite ease-in-out;
+    transition: background-position 1s ease;
+  }
+
+  .glowing-button:hover {
+    animation: glowing-border 3s infinite ease-in-out, shimmering 2s infinite linear;
+  }
+
+  .glowing-button:active {
+    animation: glowing-border 3s infinite ease-in-out, shimmering 1s infinite linear;
+  }
+
+#zoom-img {
+  transform: scale(1.5); /* Default zoom level */
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
+  object-position: center center; /* Start with the image centered */
+}
+
+
+/*Scrolling effect*/
+
+.container {
+  opacity: 0;
+  transform: translateY(100px); /* Start from below */
+  transition: opacity 1s ease-out, transform 1s ease-out; /* Animate on scroll */
+}
+
+.container.visible {
+  opacity: 1;
+  transform: translateY(0); /* Move to normal position */
+}
+
+
+
+
+}

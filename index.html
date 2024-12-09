@@ -3,38 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Portfolio</title>
+  <title>Mthokozisi Nxumalo</title>
+  <link rel="icon" href="Images/Mr-CEO-logo.png" sizes="32x32" type="image/png">
+<link rel="icon" href="Images/Mr-CEO-logo.png" sizes="64x64" type="image/png">
+<link rel="icon" href="Images/Mr-CEO-logo.png" sizes="192x192" type="image/png">
+
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="dist/styles.css" rel="stylesheet">
+  <script src="script.js" defer></script>
+
+
+
 </head>
 <body class="bg-[#eae1d7] text-[#2d2b2a]">
 
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            poppins: ['Poppins', 'sans-serif'],
-            playfair: ['Playfair Display', 'serif'],
-          },
-        },
-      },
-    }
-  </script>
-  
+
 
  <!-- Navbar Panel -->
- <header class="max-w-screen-xl mx-auto mt-6 border-t border-x border-[#e4d3c3] bg-[#e4d3c3] rounded-lg px-4">
+ <header class="max-w-screen-xl mx-auto mt-6 border border-[#e4d3c3] bg-[#e4d3c3] rounded-lg px-6">
+
   <div class="flex justify-start items-center py-4">
     <!-- Logo and Text -->
     <div class="flex items-center space-x-2">
-      <img src="images/Mr CEO logo.svg" alt="Mr CEO Logo" class="h-10 max-h-10 object-contain"> 
-      <span class="font-poppins text-[#2d2b2a] text-xl font-semibold">Mr CEO</span>
+      <a href="index.html" class="flex items-center space-x-2">
+        <img src="images/Mr CEO logo.svg" alt="Mr CEO Logo" class="h-10 max-h-10 object-contain">
+        <span class="font-poppins text-[#2d2b2a] text-xl font-semibold">Mr CEO</span>
+      </a>
     </div>
 
-    <!-- Hamburger Icon -->
-    <div class="lg:hidden ml-auto">
+     <!-- Hamburger Icon -->
+     <div class="lg:hidden ml-auto">
       <button id="hamburger-btn" class="text-[#2d2b2a]">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -44,108 +45,181 @@
 
     <!-- Navigation Links -->
     <nav id="nav-links" class="hidden lg:flex space-x-6 font-poppins font-Regular ml-auto">
-      <a href="#" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition">About</a>
-      <a href="#" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition">Contact</a>
-      <a href="#" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition">Case Studies</a>
+      <a href="about.html" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition transform  active:scale-95 hover:scale-95">About</a>
+      <a href="contact.html" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition transform active:scale-95 hover:scale-95">Contact</a>
+      <a href="design_page.html" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition transform active:scale-95 hover:scale-95">Design Work</a>
+    </nav>
+  </div>
+
+  <div id="mobile-menu" class="lg:hidden hidden absolute top-0 left-0 w-full bg-[#e4d3c3]">
+    <nav class="flex flex-col items-center py-4 space-y-4">
+      <a href="about.html" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition transform active:scale-95 hover:scale-95">About</a>
+      <a href="contact.html" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition transform active:scale-95 hover:scale-95">Contact</a>
+      <a href="design_page.html" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition transform active:scale-95 hover:scale-95">Design Work</a>
+      <!-- Close Button (optional) -->
+      <button id="close-menu" class="text-[#2d2b2a] font-poppins mt-4">[x]</button>
     </nav>
   </div>
 </header>
 
 
+<!-- Hero Section -->
+<section class="h-screen w-full flex items-center justify-center bg-[#eae1d7]">
+  <div class="text-center px-6">
+    <!-- Main Heading -->
+    <h1 id="hero-heading" class="text-4xl md:text-6xl font-poppins font-bold text-[#2d2b2a] leading-snug">
+      <span id="typewriter-text"></span>
+    </h1>
+    <!-- Subheading -->
+    <p id="subheading" class="text-lg md:text-xl font-poppins text-[#2d2b2a] mt-4 glitch">
+      I'm a professional Software Engineer and Designer.
+    </p>
+  
+    <!-- CTA Buttons -->
+    <div class="mt-12 flex justify-center gap-8">
+      <!-- Contact Me Button -->
+      <a href="contact.html" class="relative group overflow-hidden inline-flex items-center px-8 py-4 h-14 rounded-full bg-gradient-to-r from-[#7d6f5a] to-[#d6cab9] text-white text-lg font-medium shadow-lg transition-all duration-300 active:scale-90 active:shadow-inner transform hover:scale-105 hover:shadow-2xl hover:translate-y-1">
+        <span class="relative text-sm">Contact Me</span>
+        <div class="flex items-center -space-x-3 translate-x-3">
+          <div class="w-2.5 h-[1.6px] rounded bg-white origin-left scale-x-0 transition duration-300 group-hover:scale-x-100"></div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-white -translate-x-2 transition duration-300 group-hover:translate-x-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </a>
+      
+      <!-- Download my CV -->
+      <a href="#about-section" class="relative group overflow-hidden inline-flex items-center px-8 py-4 h-14 rounded-full bg-gradient-to-r from-[#7d6f5a] to-[#d6cab9] text-white text-lg font-medium shadow-lg transition-all duration-300 active:scale-90 active:shadow-inner transform hover:scale-105 hover:shadow-2xl hover:translate-y-1">
+        <span class="relative text-sm">Download my CV</span>
+        <div class="flex items-center -space-x-3 translate-x-3">
+          <div class="w-2.5 h-[1.6px] rounded bg-white origin-left scale-x-0 transition duration-300 group-hover:scale-x-100"></div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-white -translate-x-2 transition duration-300 group-hover:translate-x-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
-<!-- Main Content -->
-<main class="max-w-screen-xl mx-auto mt-6 p-4">
+
+
+
+
+<!-- Main section -->
+
+<main id="main-content" class="max-w-screen-xl mx-auto mt-3 px-4">
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
     
     <!-- Hero Text -->
-<div class="md:col-span-2 lg:col-span-2 bg-[#e4d3c3] p-6 rounded-lg">
-  <h2 class="text-3xl font-playfair font-semibold mb-4 text-[#2d2b2a]">Welcome to my world of Technology and Innovation</h2>
-  <p class="text-[#7d6f5a] font-poppins">I’m a Computer Science graduate from UKZN, currently working as a Software Engineer intern. With a deep passion for technology and problem-solving, I strive to create solutions that drive progress and innovation in the tech world. Let's explore the endless possibilities of software development and engineering together.</p>
-</div>
-
+    <div class="container md:col-span-2 lg:col-span-2 bg-[#e4d3c3] p-6 rounded-lg">
+      <h2 class="text-3xl font-playfair font-semibold mb-4 text-[#2d2b2a]">Welcome to my world of Technology and Innovation</h2>
+      <p class="text-[#7d6f5a] font-poppins transform hover:scale-[1.01] duration-150 ease-in-out ">I’m a Computer Science graduate from UKZN, currently working as a Software Engineer intern. With a deep passion for technology and problem-solving, I strive to create solutions that drive progress and innovation in the tech world. Let’s dive deep into the endless possibilities that software development and engineering have to offer.</p>
+    </div>
 
     <!-- Image -->
-    <div class="lg:col-span-1 bg-[#b59a7d] p-4 rounded-lg relative overflow-hidden h-auto">
+    <div class="container lg:col-span-1 bg-[#b59a7d] p-4 rounded-lg relative overflow-hidden h-full">
       <img src="Images/Screenshot_2024-12-08_194622-removebg-preview.png" 
            alt="Mthokozisi Nxumalo" 
-           class="absolute top-0 left-0 w-full h-full object-cover">
+           class="w-full h-full object-cover transform scale-150 transition-transform duration-300 ease-in-out" id="zoom-img">
     </div>
-    
+
     <!-- Services -->
-    <div class="lg:col-span-1 bg-[#e4d3c3] p-4 rounded-lg">
+    <div class="container lg:col-span-1 bg-[#e4d3c3] p-4 rounded-lg">
       <h3 class="text-xl font-playfair font-bold mb-4 text-[#2d2b2a]">My Work</h3>
       <p class="text-[#7d6f5a] font-poppins mb-8 italic">"Creativity is intelligence having fun." – Albert Einstein</p>
       <ul class="space-y-6 text-[#7d6f5a] font-poppins">
-        <li class="group flex items-center justify-between cursor-pointer hover:text-[#9f8765] transition">
-          <span>Puzzle Game</span>
-          <span class="text-[#9f8765] group-hover:text-[#7d6f5a] transition">➔</span>
+        <!-- Link to Rock Paper Scissors Game -->
+        <li class="group flex items-center justify-between cursor-pointer hover:text-[#9f8765] transition transform active:scale-95 hover:scale-95">
+          <a href="#" class="flex justify-between w-full">
+            <span>Rock Paper Scissors Game</span>
+            <span class="text-[#9f8765] group-hover:text-[#7d6f5a] transition">➔</span>
+          </a>
         </li>
         <hr class="border-t border-[#cbb49a]">
-        <li class="group flex items-center justify-between cursor-pointer hover:text-[#9f8765] transition">
-          <span>Etch to Sketch</span>
-          <span class="text-[#9f8765] group-hover:text-[#7d6f5a] transition">➔</span>
+        
+        <!-- Link to Etch to Sketch -->
+        <li class="group flex items-center justify-between cursor-pointer hover:text-[#9f8765] transition transform active:scale-95 hover:scale-95">
+          <a href="#" class="flex justify-between w-full">
+            <span>Etch to Sketch</span>
+            <span class="text-[#9f8765] group-hover:text-[#7d6f5a] transition">➔</span>
+          </a>
         </li>
         <hr class="border-t border-[#cbb49a]">
-        <li class="group flex items-center justify-between cursor-pointer hover:text-[#9f8765] transition">
-          <span>Logo Designs</span>
-          <span class="text-[#9f8765] group-hover:text-[#7d6f5a] transition">➔</span>
+        
+        <!-- Link to Design Work -->
+        <li class="group flex items-center justify-between cursor-pointer hover:text-[#9f8765] transition transform active:scale-95 hover:scale-95">
+          <a href="design_page.html" class="flex justify-between w-full">
+            <span>Design Work</span>
+            <span class="text-[#9f8765] group-hover:text-[#7d6f5a] transition">➔</span>
+          </a>
         </li>
       </ul>
     </div>
     
-    
-
     <!-- Skills Panel -->
-    <div class="lg:col-span-2 md:col-span-2 bg-[#e4d3c3] p-4 rounded-lg">
+    <div class="container transform hover:scale-[1.02] duration-150 ease-in-out lg:col-span-2 md:col-span-2 bg-[#e4d3c3] p-4 rounded-lg">
       <h3 class="text-xl font-playfair font-bold mb-4 text-[#2d2b2a]">Skills</h3>
-      <ul class="grid grid-cols-2 gap-2 text-[#7d6f5a] font-poppins">
+      <ul class="grid grid-cols-3 gap-2 text-[#7d6f5a] font-poppins">
         <li>Python</li>
+        <li>MongoDB</li>
         <li>Java</li>
+        <li>Tailwind CSS</li>
+        <li>Bash Scripting</li>
+        <li>REST API / GraphQL</li>
         <li>C#</li>
-        <li>REST API</li>
-        <li>GraphQL</li>
         <li>Git</li>
         <li>JavaScript</li>
-        <li>MongoDB</li>
+        <li>SQL</li>
+        <li>Flutter</li>
+        <li>Docker</li>
+        <li>Unit Testing</li>
         <li>Jira</li>
       </ul>
     </div>
 
-  <!-- Contact Section -->
-<div class="md:col-span-2 lg:col-span-1 bg-[#e4d3c3] p-4 rounded-lg text-center">
-  <h3 class="text-xl font-playfair font-bold mb-4 text-[#2d2b2a]">Contact Me</h3>
-  <p class="text-[#7d6f5a] font-poppins mb-4">Let’s connect and discuss your special event!</p>
-  <button class="bg-[#b69a7d] hover:bg-[#9f8765] text-white py-2 px-4 rounded-lg transition">
-    Get in Touch
-  </button>
-</div>
+    <!-- Random API -->
+    <div class="container transform hover:scale-[1.02] duration-150 ease-in-out bg-[#2d2b2a] p-6 rounded-lg text-center">
+      <h2 class="text-[#e4d3c3] font-playfair text-xl font-semibold mb-4">Random jokes every 15s</h2>
+      <p id="api" class="text-[#e4d3c3] font-poppins text-xl italic">Loading joke...</p> 
+    </div>
 
-   <!-- Social Links -->
-  <div class="lg:col-span-1 md:col-span-2 bg-[#e4d3c3] p-4 rounded-lg mb-4">
-  <h3 class="text-xl font-playfair font-bold mb-4 text-[#2d2b2a]">Follow Me</h3>
-  <div class="flex space-x-6 justify-center">
-    <a href="#" class="text-[#7d6f5a] font-poppins hover:text-[#7d6f5a] transition">Instagram</a>
-    <a href="#" class="text-[#7d6f5a] font-poppins hover:text-[#7d6f5a] transition">Twitter</a>
-    <a href="#" class="text-[#7d6f5a] font-poppins hover:text-[#7d6f5a] transition">Pinterest</a>
-  </div>
-</div>
+    <!-- About me button Section -->
+    <div class="container md:col-span-2 lg:col-span-1 bg-[#e4d3c3] p-4 rounded-lg text-center flex flex-col justify-center items-center">
+      <h3 class="text-xl font-playfair font-bold mb-4 text-[#2d2b2a]">More About Me</h3>
+      <p class="text-[#7d6f5a] font-poppins mb-4">Explore my journey, discover my skills, and learn more.</p>
+      <a href="about.html">
+        <button class="relative group overflow-hidden px-6 h-12 rounded-full flex space-x-2 items-center bg-gradient-to-r from-[#7d6f5a] to-[#d6cab9] glowing-button transition-all duration-300 active:scale-95 active:shadow-inner">
+          <span class="relative text-sm text-white">Learn More</span>
+          <div class="flex items-center -space-x-3 translate-x-3">
+            <div class="w-2.5 h-[1.6px] rounded bg-white origin-left scale-x-0 transition duration-300 group-hover:scale-x-100"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 stroke-white -translate-x-2 transition duration-300 group-hover:translate-x-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </button>
+      </a>
+      
+    </div>
 
-
-    
+    <!-- Social Links -->
+    <div class="container  lg:col-span-1 md:col-span-2 bg-[#e4d3c3] p-4 rounded-lg mb-4">
+      <h3 class="text-xl font-playfair font-bold mb-4 text-[#2d2b2a]">Follow Me</h3>
+      <div class="flex space-x-6 justify-center">
+        <a href="#" class="text-[#7d6f5a] font-poppins transition transform active:scale-95 hover:scale-95 ">Instagram</a>
+        <a href="#" class="text-[#7d6f5a] font-poppins transition transform active:scale-95 hover:scale-95">Twitter</a>
+        <a href="#" class="text-[#7d6f5a] font-poppins transition transform active:scale-95 hover:scale-95">LinkedIn</a>
+      </div>
+    </div>
   </div>
 </main>
 
+<!-- Footer section -->
+<footer class="bg-[#2d2b2a] text-[#e4d3c3] text-center py-4 font-poppins text-sm">
+  © Mthokozisi Nxumalo. All rights reserved.
+</footer>
 
-
-  <script>
-    // Toggle mobile menu visibility using querySelector
-    const hamburgerBtn = document.querySelector("#hamburger-btn");
-    const mobileMenu = document.querySelector("#mobile-menu");
-
-    hamburgerBtn.addEventListener("click", function() {
-      mobileMenu.classList.toggle("hidden");
-    });
-  </script>
+ 
 
 </body>
 </html>

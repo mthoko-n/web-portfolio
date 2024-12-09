@@ -1,0 +1,21 @@
+{
+  "name": "web-portfolio",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "build:css": "npx tailwindcss -i styles.css -o ./dist/styles.css --minify",
+    "start": "npm run build:css && live-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.16"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  }
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me - Mr CEO</title>
+  <link rel="icon" href="images/Mr-CEO-logo.png" sizes="32x32" type="image/png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="script.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Contrail background animation */
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .background div {
+      position: absolute;
+      width: 5px;
+      height: 100px;
+      background: linear-gradient(90deg, #ffcc70, #ff8c42, #ff2e63);
+      animation: moveTrail 10s linear infinite;
+    }
+
+    .background div:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .background div:nth-child(2) {
+      left: 30%;
+      animation-delay: 2s;
+    }
+
+    .background div:nth-child(3) {
+      left: 50%;
+      animation-delay: 4s;
+    }
+
+    .background div:nth-child(4) {
+      left: 70%;
+      animation-delay: 6s;
+    }
+
+    .background div:nth-child(5) {
+      left: 90%;
+      animation-delay: 8s;
+    }
+
+    @keyframes moveTrail {
+      0% {
+        top: 100%;
+      }
+
+      100% {
+        top: -10%;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-[#141414] text-[#eaeaea] overflow-x-hidden relative">
+  <div class="background">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="max-w-screen-xl mx-auto mt-6 border border-[#333333] bg-[#1f1f1f] rounded-lg px-6">
+    <div class="flex justify-between items-center py-4">
+      <a href="index.html" class="flex items-center space-x-2">
+        <img src="images/Mr CEO logo.svg" alt="Mr CEO Logo" class="h-10 max-h-10 object-contain">
+        <span class="text-[#eaeaea] text-xl font-bold">Mr CEO</span>
+      </a>
+
+       <!-- Hamburger Icon -->
+     <div class="lg:hidden ml-auto">
+        <button id="hamburger-btn" class="text-[#2d2b2a]">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="hidden lg:flex space-x-6">
+       
+        <a href="contact.html" class="text-[#eaeaea] hover:text-[#7d6f5a] transition">Contact</a>
+        <a href="design_page.html" class="text-[#eaeaea] hover:text-[#7d6f5a] transition">Design Work</a>
+      </nav>
+
+      <div id="mobile-menu" class="lg:hidden hidden absolute top-0 left-0 w-full bg-[#e4d3c3]">
+        <nav class="flex flex-col items-center py-4 space-y-4">
+          <a href="design_page.html" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition transform active:scale-95 hover:scale-95">Design Work</a>
+          <a href="contact.html" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition transform active:scale-95 hover:scale-95">Contact</a>
+       
+          <!-- Close Button (optional) -->
+          <button id="close-menu" class="text-[#2d2b2a] font-poppins mt-4">[x]</button>
+        </nav>
+      </div>
+    </div>
+
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="container max-w-screen-xl mx-auto mt-10 px-6">
+    <div class="flex flex-col items-center text-center">
+      <h1 class="text-5xl font-bold text-[#eaeaea] mb-4">Hello, I'm Mthokozisi Nxumalo</h1>
+      <p class="text-[#b3b3b3] text-lg max-w-3xl leading-relaxed mb-8">
+        I'm a Computer Science graduate from <strong>UKZN</strong>, currently thriving as a <strong>Software Engineer Intern</strong>. With a deep passion for technology and problem-solving, I aim to create innovative solutions that drive progress and impact the world. Beyond coding, I embrace challenges, foster growth, and cherish the opportunities to connect with people and ideas.
+      </p>
+      <a href="contact.html" class="px-6 py-3 bg-[#7d6f5a] text-[#141414] font-semibold rounded-lg hover:bg-[#eaeaea] hover:text-[#7d6f5a] transition">Contact Me</a>
+    </div>
+
+    <div class="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <!-- Skills Section -->
+      <div>
+        <h2 class="text-3xl font-bold text-[#eaeaea] mb-6">Expertise</h2>
+        <ul class="space-y-3 text-[#b3b3b3]">
+          <li>✔️ Python, Java, C#, Node.js</li>
+          <li>✔️ Web Development: HTML, CSS, JavaScript, Tailwind CSS</li>
+          <li>✔️ Docker,MongoDB, Unit Testing</li>
+          <li>✔️ Responsive UI/UX Design</li>
+          <li>✔️ Rest API , GraphGL</li>
+          <li>✔️ Problem-solving & Competitive Programming</li>
+        </ul>
+      </div>
+
+      <!-- Personal Details -->
+      <div>
+        <h2 class="text-3xl font-bold text-[#eaeaea] mb-6">A Little About Me</h2>
+        <p class="text-[#b3b3b3] leading-relaxed">
+          Born and raised in South Africa, I'm driven by a relentless curiosity to explore and innovate. My journey in technology started early and has since flourished into a career filled with learning and growth. I’m also a gamer (Fortnite & FC24), and a tech enthusiast passionate about making an impact both online and offline. My friends call me "Mr CEO" because of all my failed entrepreneurial ventures 😂😂 .
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center mt-20 py-6 bg-[#1f1f1f] text-[#b3b3b3]">
+    <p>&copy; 2024 Mthokozisi Nxumalo. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>

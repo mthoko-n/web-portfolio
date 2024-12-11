@@ -21,7 +21,7 @@
   content: '';
   position: absolute;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.6);
+  background: #fdf8e7;
   animation: bubbleAnimation 10s infinite ease-in-out;
 }
 
@@ -45,7 +45,7 @@
 .contrail-bubbles .bubble {
   width: 40px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.4);
+  background: #faf8f2;
   animation-delay: 4s;
 }
 
@@ -88,13 +88,13 @@
 
 
 </head>
-<body class="bg-[#eae1d7] text-[#2d2b2a]">
+<body class="bg-[#ffffff] text-[#2d2b2a]">
 
 
 
 
  <!-- Navbar Panel -->
- <header class="max-w-screen-xl mx-auto mt-6 border border-[#e4d3c3] bg-[#e4d3c3] rounded-lg px-6">
+ <header class="max-w-screen-xl mx-auto mt-6 border border-[#faf8f2] bg-[#faf8f2] rounded-lg px-6">
 
   <div class="flex justify-start items-center py-4">
     <!-- Logo and Text -->
@@ -140,9 +140,11 @@
 
 
 <!-- Hero Section -->
-<section class="h-screen w-full flex items-center justify-center bg-[#eae1d7] relative overflow-hidden">
+<section class="h-screen w-full flex items-center justify-center bg-[#ffffff] relative overflow-hidden">
   <!-- Moving Contrail Background -->
   <div class="contrail-bubbles absolute top-0 left-0 w-full h-full pointer-events-none">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
     <div class="bubble"></div>
     <div class="bubble"></div>
     <div class="bubble"></div>
@@ -200,20 +202,20 @@
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
     
     <!-- Hero Text -->
-    <div class="container md:col-span-2 lg:col-span-2 bg-[#e4d3c3] p-6 rounded-lg">
+    <div class="container md:col-span-2 lg:col-span-2 bg-[#faf8f2] p-6 rounded-lg">
       <h2 class="text-3xl font-playfair font-semibold mb-4 text-[#2d2b2a]">Welcome to my world of Technology and Innovation</h2>
       <p class="text-[#7d6f5a] font-poppins transform hover:scale-[1.01] duration-150 ease-in-out ">I’m a Computer Science graduate from UKZN, currently working as a Software Engineer intern. With a deep passion for technology and problem-solving, I strive to create solutions that drive progress and innovation in the tech world. Let’s dive deep into the endless possibilities that software development and engineering have to offer.</p>
     </div>
 
     <!-- Image -->
-    <div class="container lg:col-span-1 bg-[#b59a7d] p-4 rounded-lg relative overflow-hidden h-full">
+    <div class="container lg:col-span-1 bg-[#dec3ab] p-4 rounded-lg relative overflow-hidden h-full">
       <img src="Images/Screenshot_2024-12-08_194622-removebg-preview.png" 
            alt="Mthokozisi Nxumalo" 
            class="w-full h-full object-cover transform scale-150 transition-transform duration-300 ease-in-out" id="zoom-img">
     </div>
 
    <!-- Services -->
-<div class="container lg:col-span-1 bg-[#e4d3c3] p-4 rounded-lg">
+<div class="container lg:col-span-1 bg-[#faf8f2] p-4 rounded-lg">
   <h3 class="text-xl font-playfair font-bold mb-4 text-[#2d2b2a]">My Work</h3>
   <ul class="space-y-6 text-[#7d6f5a] font-poppins">
 
@@ -251,7 +253,7 @@
 
     
     <!-- Skills Panel -->
-    <div class="container transform hover:scale-[1.02] duration-150 ease-in-out lg:col-span-2 md:col-span-2 bg-[#e4d3c3] p-4 rounded-lg">
+    <div class="container transform hover:scale-[1.02] duration-150 ease-in-out lg:col-span-2 md:col-span-2 bg-[#faf8f2] p-4 rounded-lg">
       <h3 class="text-xl font-playfair font-bold mb-4 text-[#2d2b2a]">Skills</h3>
       <ul class="grid grid-cols-3 gap-2 text-[#7d6f5a] font-poppins">
         <li>Python</li>
@@ -278,7 +280,7 @@
     </div>
 
     <!-- About me button Section -->
-    <div class="container md:col-span-2 lg:col-span-1 bg-[#e4d3c3] p-4 rounded-lg text-center flex flex-col justify-center items-center">
+    <div class="container md:col-span-2 lg:col-span-1 bg-[#faf8f2] p-4 rounded-lg text-center flex flex-col justify-center items-center">
       <h3 class="text-xl font-playfair font-bold mb-4 text-[#2d2b2a]">More About Me</h3>
       <p class="text-[#7d6f5a] font-poppins mb-4">Explore my journey, discover my skills, and learn more.</p>
       <a href="about.html">
@@ -296,7 +298,7 @@
     </div>
 
     <!-- Social Links -->
-<div class="container lg:col-span-1 md:col-span-2 bg-[#e4d3c3] p-4 rounded-lg mb-4">
+<div class="container lg:col-span-1 md:col-span-2 bg-[#faf8f2] p-4 rounded-lg mb-4">
   <h3 class="text-xl font-playfair font-bold mb-4 text-[#2d2b2a]">Follow Me</h3>
   <div class="flex flex-col lg:flex-row lg:flex-wrap space-y-4 lg:space-y-0 lg:space-x-6 justify-center overflow-x-auto">
     <a href="https://www.instagram.com/mthoko__n/" class="text-[#7d6f5a] font-poppins transition transform active:scale-95 hover:scale-95 flex items-center space-x-2 text-sm lg:text-base">

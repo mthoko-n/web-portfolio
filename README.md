@@ -1,4 +1,4 @@
-# 🌍 Mthoko-N Web Portfolio  
+# 🌍 Mthokozisi Nxumalo (Mr CEO) Web Portfolio  
 
 Welcome to my personal web portfolio, where I showcase my skills in web development, design, and creativity. 🚀  
 

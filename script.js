@@ -111,7 +111,7 @@ const observer = new IntersectionObserver((entries, observer) => {
       observer.unobserve(entry.target); // Stop observing once the element is visible
     }
   });
-}, { threshold: 0.3 }); // Trigger when 30% of the element is in view
+}, { threshold: 0.2 }); // Trigger when 30% of the element is in view
 
 // Select all the container elements you want to animate
 const containers = document.querySelectorAll('.container');

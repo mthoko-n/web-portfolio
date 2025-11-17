@@ -11,8 +11,8 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - Mthokozisi Nxumalo</title>
-  <link rel="icon" href="Images/Mr-CEO-logo.png" sizes="32x32" type="image/png">
+  <title>About - Mthokozisi Nxumalo</title>
+  <link rel="icon" href="Images/mrceo_logo.png" sizes="32x32" type="image/png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -29,7 +29,6 @@
       background: #000;
       color: #fff;
       overflow-x: hidden;
-      min-height: 100vh;
     }
 
     html {
@@ -70,7 +69,7 @@
 
     /* Hero Section */
     .hero-section {
-      min-height: 40vh;
+      min-height: 60vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -91,8 +90,8 @@
       }
     }
 
-    /* Contact Card */
-    .contact-card {
+    /* Content Cards */
+    .content-card {
       background: #000;
       border: 1px solid #333;
       transition: all 0.3s ease;
@@ -100,7 +99,7 @@
       overflow: hidden;
     }
 
-    .contact-card::before {
+    .content-card::before {
       content: '';
       position: absolute;
       top: 0;
@@ -111,37 +110,13 @@
       transition: left 0.5s ease;
     }
 
-    .contact-card:hover::before {
+    .content-card:hover::before {
       left: 100%;
     }
 
-    .contact-card:hover {
+    .content-card:hover {
       border-color: #666;
       transform: translateY(-5px);
-    }
-
-    /* Contact Item */
-    .contact-item {
-      transition: all 0.3s ease;
-      border-bottom: 1px solid #222;
-      padding: 1.5rem 0;
-    }
-
-    .contact-item:last-child {
-      border-bottom: none;
-    }
-
-    .contact-item:hover {
-      padding-left: 10px;
-    }
-
-    .contact-item a {
-      color: #fff;
-      transition: all 0.3s ease;
-    }
-
-    .contact-item a:hover {
-      color: #999;
     }
 
     /* Button Hover */
@@ -154,13 +129,14 @@
       box-shadow: 0 0 20px rgba(255,255,255,0.3);
     }
 
+    /* Mobile Menu */
     .mobile-menu-btn {
       display: none;
     }
 
     @media (max-width: 768px) {
       .desktop-nav {
-        display: none;
+        display: none !important;
       }
       
       .mobile-menu-btn {
@@ -168,64 +144,26 @@
       }
     }
 
-    /* Floating Particles */
-    @keyframes floatParticles {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0.3;
-      }
-      50% {
-        transform: translateY(-30px) rotate(180deg);
-        opacity: 0.6;
-      }
-      100% {
-        transform: translateY(0) rotate(360deg);
-        opacity: 0.3;
-      }
+    /* Skill Items */
+    .skill-item {
+      transition: all 0.3s ease;
     }
 
-    .particle {
-      position: fixed;
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      animation: floatParticles 8s ease-in-out infinite;
-      pointer-events: none;
-      z-index: 1;
+    .skill-item:hover {
+      transform: translateX(5px);
+      color: #fff;
     }
 
-    .particle:nth-child(1) {
-      top: 20%;
-      left: 10%;
-      width: 8px;
-      height: 8px;
-      animation-duration: 6s;
+    /* Section Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
     }
 
-    .particle:nth-child(2) {
-      top: 60%;
-      left: 80%;
-      width: 12px;
-      height: 12px;
-      animation-duration: 8s;
-      animation-delay: 2s;
-    }
-
-    .particle:nth-child(3) {
-      top: 40%;
-      right: 20%;
-      width: 10px;
-      height: 10px;
-      animation-duration: 7s;
-      animation-delay: 1s;
-    }
-
-    .particle:nth-child(4) {
-      bottom: 30%;
-      left: 30%;
-      width: 6px;
-      height: 6px;
-      animation-duration: 9s;
-      animation-delay: 3s;
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -233,20 +171,17 @@
   <!-- Grid Background -->
   <div class="grid-bg"></div>
 
-  <!-- Floating Particles -->
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-
   <!-- Navigation -->
   <nav>
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="index.html" class="text-xl font-bold tracking-wider hover:text-gray-400 transition">MN</a>
+      <div class="flex items-center">
+        <img src="Images/mrceo_logo.png" alt="Logo" class="h-10 w-10 object-contain">
+      </div>
       <div class="desktop-nav flex gap-8">
         <a href="index.html" class="hover:text-gray-400 transition">Home</a>
-        <a href="about.html" class="hover:text-gray-400 transition">About</a>
-        <a href="design_page.html" class="hover:text-gray-400 transition">Design Work</a>
+        <a href="index.html#skills" class="hover:text-gray-400 transition">Skills</a>
+        <a href="index.html#work" class="hover:text-gray-400 transition">Work</a>
+        <a href="contact.html" class="hover:text-gray-400 transition">Contact</a>
       </div>
       <button class="mobile-menu-btn text-white" id="mobile-menu-toggle">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -258,8 +193,9 @@
     <div id="mobile-menu" class="hidden bg-black border-t border-gray-800">
       <div class="flex flex-col px-6 py-4 space-y-4">
         <a href="index.html" class="hover:text-gray-400 transition">Home</a>
-        <a href="about.html" class="hover:text-gray-400 transition">About</a>
-        <a href="design_page.html" class="hover:text-gray-400 transition">Design Work</a>
+        <a href="index.html#skills" class="hover:text-gray-400 transition">Skills</a>
+        <a href="index.html#work" class="hover:text-gray-400 transition">Work</a>
+        <a href="contact.html" class="hover:text-gray-400 transition">Contact</a>
       </div>
     </div>
   </nav>
@@ -267,101 +203,119 @@
   <!-- Hero Section -->
   <section class="hero-section pt-20 px-6">
     <div class="max-w-6xl mx-auto text-center fade-in">
-      <h1 class="text-5xl md:text-7xl font-bold mb-6">GET IN TOUCH</h1>
+      <h1 class="text-5xl md:text-7xl font-bold mb-6">ABOUT ME</h1>
       <div class="w-20 h-1 bg-white mx-auto mb-8"></div>
-      <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-        Let's discuss your project or opportunity
+      <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+        Hello, I'm <span class="text-white font-semibold">Mthokozisi Nxumalo</span>
       </p>
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Main Content -->
   <section class="py-20 px-6 relative z-10">
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-6xl mx-auto space-y-12">
       
-      <!-- Main Contact Card -->
-      <div class="contact-card p-8 md:p-12 rounded-lg mb-8">
-        <h2 class="text-3xl font-bold mb-8 text-center">CONTACT INFORMATION</h2>
-        
-        <div class="space-y-0">
-          <!-- Email -->
-          <div class="contact-item">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-              <div class="flex items-center gap-3">
-                <i class="fas fa-envelope text-2xl"></i>
-                <span class="text-gray-400 text-sm uppercase tracking-wider">Email</span>
-              </div>
-              <a href="mailto:nxumalomthokozisi7@gmail.com" class="text-lg md:text-xl font-light break-all">
-                nxumalomthokozisi7@gmail.com
-              </a>
-            </div>
-          </div>
-
-          <!-- Phone -->
-          <div class="contact-item">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-              <div class="flex items-center gap-3">
-                <i class="fas fa-phone text-2xl"></i>
-                <span class="text-gray-400 text-sm uppercase tracking-wider">Phone</span>
-              </div>
-              <a href="tel:0737789400" class="text-lg md:text-xl font-light">
-                073 778 9400
-              </a>
-            </div>
-          </div>
-
-          <!-- Location -->
-          <div class="contact-item">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-              <div class="flex items-center gap-3">
-                <i class="fas fa-map-marker-alt text-2xl"></i>
-                <span class="text-gray-400 text-sm uppercase tracking-wider">Location</span>
-              </div>
-              <span class="text-lg md:text-xl font-light">
-                Johannesburg, Gauteng
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <!-- CTA Button -->
-        <div class="mt-12 text-center">
-          <a href="mailto:nxumalomthokozisi7@gmail.com" class="btn-hover inline-block px-8 py-4 border border-white hover:bg-white hover:text-black transition text-lg">
-            <i class="fas fa-paper-plane mr-2"></i>
-            SEND EMAIL
-          </a>
-        </div>
-      </div>
-
-      <!-- Social Links Card -->
-      <div class="contact-card p-8 rounded-lg">
-        <h3 class="text-2xl font-bold mb-6 text-center">CONNECT WITH ME</h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <a href="https://www.linkedin.com/in/mthokozisi-nxumalo/" class="flex flex-col items-center gap-3 hover:text-gray-400 transition">
-            <i class="fab fa-linkedin text-4xl"></i>
-            <span class="text-sm">LinkedIn</span>
-          </a>
-          <a href="https://github.com/mthoko-n" class="flex flex-col items-center gap-3 hover:text-gray-400 transition">
-            <i class="fab fa-github text-4xl"></i>
-            <span class="text-sm">GitHub</span>
-          </a>
-          <a href="https://x.com/mthoko__n" class="flex flex-col items-center gap-3 hover:text-gray-400 transition">
-            <i class="fab fa-twitter text-4xl"></i>
-            <span class="text-sm">Twitter</span>
-          </a>
-          <a href="https://www.instagram.com/mthoko__n/" class="flex flex-col items-center gap-3 hover:text-gray-400 transition">
-            <i class="fab fa-instagram text-4xl"></i>
-            <span class="text-sm">Instagram</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Availability Notice -->
-      <div class="mt-8 text-center">
-        <p class="text-gray-400 text-lg">
-          <i class="fas fa-circle text-green-500 text-xs mr-2 animate-pulse"></i>
-          Available for opportunities
+      <!-- Introduction Card -->
+      <div class="content-card p-8 md:p-12 rounded-lg reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Who I Am</h2>
+        <p class="text-lg text-gray-300 leading-relaxed mb-4">
+          I'm a Computer Science graduate from <span class="text-white font-semibold">UKZN</span>, currently thriving as a <span class="text-white font-semibold">Junior Software Engineer</span>. With a deep passion for technology and problem-solving, I aim to create innovative solutions that drive progress and impact the world.
         </p>
+        <p class="text-lg text-gray-300 leading-relaxed">
+          Beyond coding, I embrace challenges, foster growth, and cherish the opportunities to connect with people and ideas. I believe in the power of technology to transform lives and create meaningful change.
+        </p>
+      </div>
+
+      <!-- Two Column Layout -->
+      <div class="grid md:grid-cols-2 gap-8">
+        
+        <!-- Expertise -->
+        <div class="content-card p-8 rounded-lg reveal">
+          <h2 class="text-3xl font-bold mb-6 border-b border-gray-800 pb-4">EXPERTISE</h2>
+          <div class="space-y-4">
+            <div class="skill-item text-gray-400 flex items-start gap-3">
+              <span class="text-white mt-1">→</span>
+              <div>
+                <div class="text-white font-semibold">Programming Languages</div>
+                <div class="text-sm">Python, Dart, Java, C++, C#, JavaScript, ASP.NET</div>
+              </div>
+            </div>
+            <div class="skill-item text-gray-400 flex items-start gap-3">
+              <span class="text-white mt-1">→</span>
+              <div>
+                <div class="text-white font-semibold">Mobile Development</div>
+                <div class="text-sm">Flutter (Dart), Android Studio</div>
+              </div>
+            </div>
+            <div class="skill-item text-gray-400 flex items-start gap-3">
+              <span class="text-white mt-1">→</span>
+              <div>
+                <div class="text-white font-semibold">Python Ecosystem</div>
+                <div class="text-sm">FastAPI, Streamlit, Pandas, NumPy, Pytest</div>
+              </div>
+            </div>
+            <div class="skill-item text-gray-400 flex items-start gap-3">
+              <span class="text-white mt-1">→</span>
+              <div>
+                <div class="text-white font-semibold">Cloud & Infrastructure</div>
+                <div class="text-sm">AWS EC2, Google Compute Engine, Cloud Run, Terraform, CloudFormation</div>
+              </div>
+            </div>
+            <div class="skill-item text-gray-400 flex items-start gap-3">
+              <span class="text-white mt-1">→</span>
+              <div>
+                <div class="text-white font-semibold">DevOps & Monitoring</div>
+                <div class="text-sm">Docker, GitHub Actions, Grafana, Loki, CloudWatch</div>
+              </div>
+            </div>
+            <div class="skill-item text-gray-400 flex items-start gap-3">
+              <span class="text-white mt-1">→</span>
+              <div>
+                <div class="text-white font-semibold">Databases & APIs</div>
+                <div class="text-sm">MongoDB, MySQL, Redis, RESTful APIs, Swagger, Postman</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Personal Side -->
+        <div class="content-card p-8 rounded-lg reveal">
+          <h2 class="text-3xl font-bold mb-6 border-b border-gray-800 pb-4">BEYOND CODE</h2>
+          <p class="text-gray-300 leading-relaxed mb-6">
+            Born and raised in South Africa, I'm driven by a relentless curiosity to explore and innovate. My journey in technology started early and has since flourished into a career filled with learning and growth.
+          </p>
+          <p class="text-gray-300 leading-relaxed mb-6">
+            I'm also a gamer (Fortnite & FC24), and a tech enthusiast passionate about making an impact both online and offline. My friends call me "Mr CEO" because of all my failed entrepreneurial ventures 😂
+          </p>
+          <div class="pt-6 border-t border-gray-800">
+            <div class="text-sm text-gray-500 mb-3">CONNECT WITH ME</div>
+            <div class="flex gap-4">
+              <a href="https://www.linkedin.com/in/mthokozisi-nxumalo/" class="text-2xl hover:text-gray-400 transition">
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="https://github.com/mthoko-n" class="text-2xl hover:text-gray-400 transition">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://x.com/mthoko_dev" class="text-2xl hover:text-gray-400 transition">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://www.instagram.com/mthoko__n/" class="text-2xl hover:text-gray-400 transition">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="content-card p-12 rounded-lg text-center reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Let's Build Something Amazing</h2>
+        <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+          I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+        </p>
+        <a href="contact.html" class="btn-hover inline-block px-8 py-4 border border-white hover:bg-white hover:text-black transition">
+          GET IN TOUCH
+        </a>
       </div>
 
     </div>
@@ -370,7 +324,7 @@
   <!-- Footer -->
   <footer class="border-t border-gray-800 py-8 px-6 bg-black relative z-10">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-      <div>© 2024 Mthokozisi Nxumalo</div>
+      <div>© 2025 Mthokozisi Nxumalo</div>
       <div class="flex gap-6">
         <a href="https://www.linkedin.com/in/mthokozisi-nxumalo/" class="hover:text-gray-400 transition">
           <i class="fab fa-linkedin"></i>
@@ -401,6 +355,24 @@
         mobileMenu.classList.add('hidden');
       });
     });
+
+    // Reveal on Scroll
+    const reveals = document.querySelectorAll('.reveal');
+    
+    const revealOnScroll = () => {
+      reveals.forEach(element => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < windowHeight - elementVisible) {
+          element.classList.add('active');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
   </script>
 </body>
 </html>

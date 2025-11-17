@@ -1,10 +1,11 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mthokozisi Nxumalo | Software Engineer</title>
-  <link rel="icon" href="Images/mrceo_logo.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="Images/mrceo_logo.svg" sizes="32x32" type="image/svg+xml">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -36,6 +37,48 @@
       position: relative;
       overflow: hidden;
     }
+
+    /* Profile Image Styling - Modified for Hero Section */
+.hero-profile-image {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #333;
+  filter: grayscale(100%);
+  transition: all 0.5s ease;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 5;
+}
+
+.hero-profile-image.visible {
+  opacity: 1;
+  filter: grayscale(0%);
+  border-color: #fff;
+  box-shadow: 0 0 30px rgba(255,255,255,0.3);
+}
+
+.hero-profile-image::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff);
+  background-size: 200% 200%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  animation: gradientRotate 3s linear infinite;
+  z-index: -1;
+}
+
+.hero-profile-image.visible::before {
+  opacity: 1;
+}
 
     /* Glitch Effect */
     .glitch {
@@ -79,8 +122,8 @@
 
     .glitch:hover::before,
     .glitch:hover::after {
-      content: attr(data-hover);
-    }
+    content: attr(data-text);
+   }
 
     @keyframes glitch-1 {
       0%, 100% { transform: translate(0); }
@@ -195,11 +238,9 @@
 
     .skill-card:hover {
       border-color: #fff;
-      /* The transform tilt is now handled by JS, but we keep the other hovers */
       box-shadow: 0 10px 30px rgba(255,255,255,0.05);
     }
     
-    /* This ensures the featured project card still gets a subtle lift on hover */
     #featured-project .skill-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 20px 40px rgba(255,255,255,0.1);
@@ -247,6 +288,8 @@
       cursor: pointer;
       pointer-events: auto;
     }
+
+
 
     /* Work Links */
     .work-link {
@@ -329,16 +372,14 @@
       display: none;
     }
     
-    /* NEW: Mobile Menu Animation */
     #mobile-menu {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.5s ease-in-out;
     }
     #mobile-menu.menu-open {
-      max-height: 500px; /* Adjust if menu gets taller */
+      max-height: 500px;
     }
-
 
     /* Video Container */
     .video-container {
@@ -365,6 +406,23 @@
       height: 100%;
     }
 
+/* Logo Link Styling */
+
+.logo-link {
+  display: inline-block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.logo-link:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.logo-link img {
+  display: block;
+}
+
     @media (max-width: 768px) {
       .desktop-nav {
         display: none !important;
@@ -373,37 +431,41 @@
       .mobile-menu-btn {
         display: block;
       }
+
+      
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center">
-        <img src="Images/mrceo_logo.png" alt="Logo" class="h-10 w-10 object-contain">
-      </div>
-      <div class="desktop-nav flex gap-8">
-        <a href="about.html" class="hover:text-gray-400 transition">About</a>
-        <a href="#skills" class="hover:text-gray-400 transition">Skills</a>
-        <a href="#work" class="hover:text-gray-400 transition">Work</a>
-        <a href="#contact" class="hover:text-gray-400 transition">Contact</a>
-      </div>
-      <button class="mobile-menu-btn text-white" id="mobile-menu-toggle">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
+ <nav>
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-4">
+      <a href="index.html" class="logo-link">
+        <img src="Images/mrceo_logo.svg" alt="Logo" class="h-14 w-14 object-contain">
+      </a>
     </div>
-    <div id="mobile-menu" class="bg-black border-t border-gray-800">
-      <div class="flex flex-col px-6 py-4 space-y-4">
-        <a href="about.html" class="hover:text-gray-400 transition">About</a>
-        <a href="#skills" class="hover:text-gray-400 transition">Skills</a>
-        <a href="#work" class="hover:text-gray-400 transition">Work</a>
-        <a href="#contact" class="hover:text-gray-400 transition">Contact</a>
-      </div>
+    <div class="desktop-nav flex gap-8">
+      <a href="about.html" class="hover:text-gray-400 transition">About</a>
+      <a href="#skills" class="hover:text-gray-400 transition">Skills</a>
+      <a href="#work" class="hover:text-gray-400 transition">Work</a>
+      <a href="#contact" class="hover:text-gray-400 transition">Contact</a>
     </div>
-  </nav>
+    <button class="mobile-menu-btn text-white" id="mobile-menu-toggle">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="bg-black border-t border-gray-800">
+    <div class="flex flex-col px-6 py-4 space-y-4">
+      <a href="about.html" class="hover:text-gray-400 transition">About</a>
+      <a href="#skills" class="hover:text-gray-400 transition">Skills</a>
+      <a href="#work" class="hover:text-gray-400 transition">Work</a>
+      <a href="#contact" class="hover:text-gray-400 transition">Contact</a>
+    </div>
+  </div>
+</nav>
 
   <section class="hero">
     <div class="grid-bg"></div>
@@ -749,36 +811,22 @@
     
     createParticles();
 
-    // MODIFIED: Hero Title Effect (auto-toggles)
-    const heroTitle = document.getElementById('heroTitle');
-    let isHovered = false;
-    let isToggled = false;
-    const originalText = 'MTHOKOZISI';
-    const hoverText = 'MR CEO';
+   // Hero Title Effect (auto-toggles only, no hover)
+const heroTitle = document.getElementById('heroTitle');
+let isToggled = false;
+const originalText = 'MTHOKOZISI';
+const hoverText = 'MR CEO';
 
-    heroTitle.addEventListener('mouseenter', () => {
-      isHovered = true;
-      heroTitle.textContent = hoverText;
-    });
-    
-    heroTitle.addEventListener('mouseleave', () => {
-      isHovered = false;
-      heroTitle.textContent = originalText;
-      isToggled = false; // Reset toggle state on mouse leave
-    });
-
-    // Automatic toggle for mobile and non-hovered desktop
-    setInterval(() => {
-      if (!isHovered) { // Only run if the user is not hovering
-        if (isToggled) {
-          heroTitle.textContent = originalText;
-        } else {
-          heroTitle.textContent = hoverText;
-        }
-        isToggled = !isToggled; // Flip the state
-      }
-    }, 2000); // MODIFIED: Switch every 2 seconds
-
+setInterval(() => {
+  if (isToggled) {
+    heroTitle.textContent = originalText;
+    heroTitle.setAttribute('data-text', originalText);
+  } else {
+    heroTitle.textContent = hoverText;
+    heroTitle.setAttribute('data-text', hoverText);
+  }
+  isToggled = !isToggled;
+}, 2000);
 
     // Magnetic Button Effect
     const magneticElements = document.querySelectorAll('.magnetic');
@@ -813,28 +861,27 @@
         const rotateY = (centerX - x) / 10;
         
         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
-        card.style.boxShadow = "0 20px 40px rgba(255,255,255,0.1)"; // Add shadow on move
+        card.style.boxShadow = "0 20px 40px rgba(255,255,255,0.1)";
       });
       
       card.addEventListener('mouseleave', () => {
         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-        card.style.boxShadow = "0 10px 30px rgba(255,255,255,0.05)"; // Reset shadow
+        card.style.boxShadow = "0 10px 30px rgba(255,255,255,0.05)";
       });
     });
 
-    // MODIFIED: Mobile Menu Toggle
+    // Mobile Menu Toggle
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     
     mobileMenuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('menu-open'); // Toggle 'menu-open' class
+      mobileMenu.classList.toggle('menu-open');
     });
 
-    // MODIFIED: Close mobile menu when clicking a link
     const mobileLinks = mobileMenu.querySelectorAll('a');
     mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
-        mobileMenu.classList.remove('menu-open'); // Close menu
+        mobileMenu.classList.remove('menu-open');
       });
     });
 
@@ -875,21 +922,73 @@
       let currentImageIndex = 0;
       
       setInterval(() => {
-        // Fade out current
         images[currentImageIndex].classList.remove('opacity-100');
         images[currentImageIndex].classList.add('opacity-0');
         
-        // Get next index
         currentImageIndex = (currentImageIndex + 1) % images.length;
         
-        // Fade in next
         images[currentImageIndex].classList.remove('opacity-0');
         images[currentImageIndex].classList.add('opacity-100');
-      }, 3000); // Change image every 3 seconds
+      }, 3000);
     }
 
-    // Start the slider
     startImageSlider();
+
+
+    // Hero Profile Image Follow Effect
+const heroSection = document.querySelector('.hero');
+const heroContent = document.querySelector('.hero .text-center');
+
+// Create the profile image element
+const heroProfileImage = document.createElement('img');
+heroProfileImage.src = 'Images/mthoko.png';
+heroProfileImage.alt = 'Mthokozisi Nxumalo';
+heroProfileImage.className = 'hero-profile-image';
+heroSection.appendChild(heroProfileImage);
+
+let mouseX = 0;
+let mouseY = 0;
+let imageX = 0;
+let imageY = 0;
+
+heroSection.addEventListener('mousemove', (e) => {
+  const rect = heroContent.getBoundingClientRect();
+  const contentCenterX = rect.left + rect.width / 2;
+  const contentCenterY = rect.top + rect.height / 2;
+  
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  
+  // Calculate distance from content center
+  const distanceFromCenter = Math.sqrt(
+    Math.pow(mouseX - contentCenterX, 2) + 
+    Math.pow(mouseY - contentCenterY, 2)
+  );
+  
+  // Show image only at the edges - far from center
+  if (distanceFromCenter > 400) {
+    heroProfileImage.classList.add('visible');
+  } else {
+    heroProfileImage.classList.remove('visible');
+  }
+});
+
+heroSection.addEventListener('mouseleave', () => {
+  heroProfileImage.classList.remove('visible');
+});
+
+// Smooth follow animation
+function animateImage() {
+  imageX += (mouseX - imageX) * 0.1;
+  imageY += (mouseY - imageY) * 0.1;
+  
+  heroProfileImage.style.left = `${imageX - 100}px`;
+  heroProfileImage.style.top = `${imageY - 100}px`;
+  
+  requestAnimationFrame(animateImage);
+}
+
+animateImage();
   </script>
 </body>
 </html>

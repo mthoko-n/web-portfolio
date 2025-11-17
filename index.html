@@ -44,6 +44,8 @@
       font-weight: 700;
       line-height: 1;
       letter-spacing: -0.02em;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
     .glitch::before,
@@ -54,6 +56,7 @@
       left: 0;
       width: 100%;
       height: 100%;
+      transition: content 0.3s ease;
     }
 
     .glitch::before {
@@ -61,6 +64,8 @@
       clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
       transform: translate(-0.025em, -0.0125em);
       opacity: 0.8;
+      color: #ff00ff;
+      z-index: -1;
     }
 
     .glitch::after {
@@ -68,22 +73,29 @@
       clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
       transform: translate(0.025em, 0.0125em);
       opacity: 0.8;
+      color: #00ffff;
+      z-index: -1;
+    }
+
+    .glitch:hover::before,
+    .glitch:hover::after {
+      content: attr(data-hover);
     }
 
     @keyframes glitch-1 {
       0%, 100% { transform: translate(0); }
-      20% { transform: translate(-2px, 2px); }
-      40% { transform: translate(-2px, -2px); }
-      60% { transform: translate(2px, 2px); }
-      80% { transform: translate(2px, -2px); }
+      20% { transform: translate(-3px, 3px); }
+      40% { transform: translate(-3px, -3px); }
+      60% { transform: translate(3px, 3px); }
+      80% { transform: translate(3px, -3px); }
     }
 
     @keyframes glitch-2 {
       0%, 100% { transform: translate(0); }
-      20% { transform: translate(2px, -2px); }
-      40% { transform: translate(2px, 2px); }
-      60% { transform: translate(-2px, -2px); }
-      80% { transform: translate(-2px, 2px); }
+      20% { transform: translate(3px, -3px); }
+      40% { transform: translate(3px, 3px); }
+      60% { transform: translate(-3px, -3px); }
+      80% { transform: translate(-3px, 3px); }
     }
 
     /* Floating Grid */
@@ -104,6 +116,42 @@
     @keyframes gridMove {
       0% { transform: translate(0, 0); }
       100% { transform: translate(50px, 50px); }
+    }
+
+    /* Particles */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: float linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) scale(1);
+        opacity: 0;
+      }
     }
 
     /* Fade In Animation */
@@ -127,6 +175,7 @@
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      transform-style: preserve-3d;
     }
 
     .skill-card::before {
@@ -146,7 +195,14 @@
 
     .skill-card:hover {
       border-color: #fff;
-      transform: translateY(-5px);
+      /* The transform tilt is now handled by JS, but we keep the other hovers */
+      box-shadow: 0 10px 30px rgba(255,255,255,0.05);
+    }
+    
+    /* This ensures the featured project card still gets a subtle lift on hover */
+    #featured-project .skill-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(255,255,255,0.1);
     }
 
     /* Section Reveal */
@@ -221,11 +277,51 @@
     /* Button Hover */
     .btn-hover {
       transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-hover::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    .btn-hover:hover::before {
+      width: 300px;
+      height: 300px;
     }
 
     .btn-hover:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(255,255,255,0.5);
+      box-shadow: 0 0 30px rgba(255,255,255,0.5);
+    }
+
+    /* Gradient Text */
+    .gradient-text {
+      background: linear-gradient(45deg, #fff, #888, #fff);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Magnetic Effect */
+    .magnetic {
+      transition: transform 0.2s ease;
     }
 
     /* Mobile Menu */
@@ -271,7 +367,6 @@
 </head>
 <body>
 
-  <!-- Navigation -->
   <nav>
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <div class="flex items-center">
@@ -289,7 +384,6 @@
         </svg>
       </button>
     </div>
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden bg-black border-t border-gray-800">
       <div class="flex flex-col px-6 py-4 space-y-4">
         <a href="about.html" class="hover:text-gray-400 transition">About</a>
@@ -300,20 +394,20 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
   <section class="hero">
     <div class="grid-bg"></div>
+    <div class="particles" id="particles"></div>
     <div class="text-center z-10 fade-in px-6">
-      <h1 class="glitch" data-text="MTHOKOZISI">MTHOKOZISI</h1>
-      <h2 class="text-2xl md:text-4xl mt-4 font-light tracking-widest" style="animation-delay: 0.3s;">SOFTWARE ENGINEER</h2>
+      <h1 class="glitch" data-text="MTHOKOZISI" data-hover="MR CEO" id="heroTitle">MTHOKOZISI</h1>
+      <h2 class="text-2xl md:text-4xl mt-4 font-light tracking-widest gradient-text" style="animation-delay: 0.3s;">SOFTWARE ENGINEER</h2>
       <p class="mt-6 text-gray-400 max-w-2xl mx-auto" style="animation-delay: 0.6s;">
         Crafting digital experiences through code and innovation
       </p>
       <div class="mt-12 flex flex-col sm:flex-row gap-6 justify-center" style="animation-delay: 0.9s;">
-        <a href="#contact" class="btn-hover px-8 py-3 border border-white hover:bg-white hover:text-black transition inline-block">
+        <a href="#contact" class="btn-hover magnetic px-8 py-3 border border-white hover:bg-white hover:text-black transition inline-block">
           GET IN TOUCH
         </a>
-        <a href="docs/Mthokozisi_Nxumalo_CV.pdf" download class="btn-hover px-8 py-3 bg-white text-black hover:bg-transparent hover:text-white border border-white transition inline-block">
+        <a href="docs/Mthokozisi_Nxumalo_CV.pdf" download class="btn-hover magnetic px-8 py-3 bg-white text-black hover:bg-transparent hover:text-white border border-white transition inline-block">
           DOWNLOAD CV
         </a>
       </div>
@@ -329,7 +423,6 @@
     </div>
   </section>
 
-  <!-- About Section -->
   <section id="about" class="min-h-screen flex items-center py-20 px-6 bg-black">
     <div class="max-w-6xl mx-auto reveal w-full">
       <h2 class="text-5xl md:text-7xl font-bold mb-12">ABOUT</h2>
@@ -361,13 +454,11 @@
     </div>
   </section>
 
-  <!-- Skills Section -->
   <section id="skills" class="min-h-screen py-20 px-6 bg-black">
     <div class="max-w-6xl mx-auto reveal">
       <h2 class="text-5xl md:text-7xl font-bold mb-12">SKILLS</h2>
       
       <div class="space-y-8">
-        <!-- Programming Languages -->
         <div class="skill-card p-6 rounded-lg">
           <h3 class="text-2xl font-semibold mb-4 text-gray-400">PROGRAMMING LANGUAGES</h3>
           <div class="flex flex-wrap gap-3">
@@ -382,7 +473,6 @@
           </div>
         </div>
 
-        <!-- Python Ecosystem -->
         <div class="skill-card p-6 rounded-lg">
           <h3 class="text-2xl font-semibold mb-4 text-gray-400">PYTHON ECOSYSTEM</h3>
           <div class="flex flex-wrap gap-3">
@@ -399,7 +489,6 @@
           </div>
         </div>
 
-        <!-- Infrastructure -->
         <div class="skill-card p-6 rounded-lg">
           <h3 class="text-2xl font-semibold mb-4 text-gray-400">CLOUD & INFRASTRUCTURE</h3>
           <div class="flex flex-wrap gap-3">
@@ -413,7 +502,6 @@
           </div>
         </div>
 
-        <!-- Databases & Monitoring -->
         <div class="skill-card p-6 rounded-lg">
           <h3 class="text-2xl font-semibold mb-4 text-gray-400">DATABASES & MONITORING</h3>
           <div class="flex flex-wrap gap-3">
@@ -427,7 +515,6 @@
           </div>
         </div>
 
-        <!-- Development Tools -->
         <div class="skill-card p-6 rounded-lg">
           <h3 class="text-2xl font-semibold mb-4 text-gray-400">DEVELOPMENT & TOOLS</h3>
           <div class="flex flex-wrap gap-3">
@@ -446,16 +533,13 @@
     </div>
   </section>
 
-  <!-- Featured Project Section - LocaLoop -->
   <section id="featured-project" class="min-h-screen py-20 px-6 bg-black">
     <div class="max-w-6xl mx-auto reveal">
       <h2 class="text-5xl md:text-7xl font-bold mb-6">FEATURED PROJECT</h2>
       <div class="h-1 w-20 bg-white mb-12"></div>
       
-      <!-- Project Card -->
       <div class="skill-card p-8 md:p-12 rounded-lg mb-12">
         <div class="grid md:grid-cols-2 gap-12 items-center">
-          <!-- Project Info -->
           <div>
             <div class="flex items-center gap-3 mb-4">
               <h3 class="text-4xl font-bold">LocaLoop</h3>
@@ -500,37 +584,27 @@
               <span class="px-4 py-2 border border-gray-700 rounded text-sm">Real-time Chat</span>
             </div>
 
-            <!-- Video Demo Button -->
             <a href="#demo-video" class="btn-hover inline-flex items-center gap-2 px-6 py-3 border border-white hover:bg-white hover:text-black transition">
               <i class="fas fa-play"></i>
               WATCH DEMO
             </a>
           </div>
 
-          <!-- Screenshots Gallery -->
           <div>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div class="aspect-[9/19] bg-[#111] rounded-lg overflow-hidden border border-gray-800 hover:border-white transition">
-                <img src="Images/Apple iPhone 16 Pro Max Screenshot 1.png" alt="LocaLoop Login Screen" class="w-full h-full object-cover">
-              </div>
-              <div class="aspect-[9/19] bg-[#111] rounded-lg overflow-hidden border border-gray-800 hover:border-white transition">
-                <img src="Images/Apple iPhone 16 Pro Max Screenshot 2.png" alt="LocaLoop Locations" class="w-full h-full object-cover">
-              </div>
-              <div class="aspect-[9/19] bg-[#111] rounded-lg overflow-hidden border border-gray-800 hover:border-white transition">
-                <img src="Images/Apple iPhone 16 Pro Max Screenshot 3.png" alt="LocaLoop Chat" class="w-full h-full object-cover">
-              </div>
-              <div class="aspect-[9/19] bg-[#111] rounded-lg overflow-hidden border border-gray-800 hover:border-white transition">
-                <img src="Images/Apple iPhone 16 Pro Max Screenshot 4.png" alt="LocaLoop Profile" class="w-full h-full object-cover">
-              </div>
-              <div class="aspect-[9/19] bg-[#111] rounded-lg overflow-hidden border border-gray-800 hover:border-white transition">
-                <img src="Images/Apple iPhone 16 Pro Max Screenshot 5.png" alt="LocaLoop Features" class="w-full h-full object-cover">
-              </div>
+            <div class="flex justify-center">
+                <div id="phone-gallery" class="relative w-full max-w-[280px] aspect-[9/19] bg-[#111] rounded-2xl overflow-hidden border border-gray-800 hover:border-white transition-all duration-300 hover:shadow-lg hover:shadow-white/10" style="transform-style: preserve-3d;">
+                    <img src="Images/Apple iPhone 16 Pro Max Screenshot 1.png" alt="LocaLoop Screen 1" class="gallery-image absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000 ease-in-out">
+                    <img src="Images/Apple iPhone 16 Pro Max Screenshot 2.png" alt="LocaLoop Screen 2" class="gallery-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 ease-in-out">
+                    <img src="Images/Apple iPhone 16 Pro Max Screenshot 3.png" alt="LocaLoop Screen 3" class="gallery-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 ease-in-out">
+                    <img src="Images/Apple iPhone 16 Pro Max Screenshot 4.png" alt="LocaLoop Screen 4" class="gallery-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 ease-in-out">
+                    <img src="Images/Apple iPhone 16 Pro Max Screenshot 5.png" alt="LocaLoop Screen 5" class="gallery-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 ease-in-out">
+                </div>
             </div>
-            <p class="text-sm text-gray-500 mt-4 text-center">Mobile App Screenshots</p>
+            <p class="text-sm text-gray-500 mt-4 text-center">Mobile App Screenshots (auto-fading)</p>
           </div>
+          
         </div>
 
-        <!-- Video Demo Section -->
         <div id="demo-video" class="mt-16 pt-12 border-t border-gray-800">
           <h4 class="text-3xl font-semibold mb-8 text-center">App Demo</h4>
           <div class="video-container">
@@ -545,7 +619,6 @@
           <p class="text-sm text-gray-500 mt-4 text-center">See LocaLoop in action</p>
         </div>
 
-        <!-- Use Cases -->
         <div class="mt-12 pt-8 border-t border-gray-800">
           <h4 class="text-2xl font-semibold mb-6">Use Cases:</h4>
           <div class="grid md:grid-cols-2 gap-6">
@@ -583,7 +656,6 @@
     </div>
   </section>
 
-  <!-- Work Section -->
   <section id="work" class="min-h-screen py-20 px-6 bg-black">
     <div class="max-w-6xl mx-auto reveal">
       <h2 class="text-5xl md:text-7xl font-bold mb-12">OTHER WORK</h2>
@@ -604,7 +676,6 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
   <section id="contact" class="min-h-screen flex items-center py-20 px-6 bg-black">
     <div class="max-w-6xl mx-auto w-full reveal">
       <h2 class="text-5xl md:text-7xl font-bold mb-12">LET'S TALK</h2>
@@ -623,7 +694,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="border-t border-gray-800 py-8 px-6 bg-black">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
       <div>© 2025 Mthokozisi Nxumalo</div>
@@ -642,6 +712,89 @@
   </footer>
 
   <script>
+    // Create Particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        const size = Math.random() * 3 + 1;
+        const startX = Math.random() * 100;
+        const duration = Math.random() * 10 + 15;
+        const delay = Math.random() * 5;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${startX}%`;
+        particle.style.animationDuration = `${duration}s`;
+        particle.style.animationDelay = `${delay}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    createParticles();
+
+    // Hero Title Hover Effect
+    const heroTitle = document.getElementById('heroTitle');
+    let isHovered = false;
+    
+    heroTitle.addEventListener('mouseenter', () => {
+      isHovered = true;
+      heroTitle.textContent = 'MR CEO';
+    });
+    
+    heroTitle.addEventListener('mouseleave', () => {
+      isHovered = false;
+      heroTitle.textContent = 'MTHOKOZISI';
+    });
+
+    // Magnetic Button Effect
+    const magneticElements = document.querySelectorAll('.magnetic');
+    
+    magneticElements.forEach(element => {
+      element.addEventListener('mousemove', (e) => {
+        const rect = element.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        element.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) scale(1.05)`;
+      });
+      
+      element.addEventListener('mouseleave', () => {
+        element.style.transform = 'translate(0, 0) scale(1)';
+      });
+    });
+
+    // 3D Tilt Effect for Skill Cards (MODIFIED)
+    // Only select cards within the #skills section
+    const skillCards = document.querySelectorAll('#skills .skill-card');
+    
+    skillCards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+        card.style.boxShadow = "0 20px 40px rgba(255,255,255,0.1)"; // Add shadow on move
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+        card.style.boxShadow = "0 10px 30px rgba(255,255,255,0.05)"; // Reset shadow
+      });
+    });
+
     // Mobile Menu Toggle
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -686,6 +839,30 @@
         }
       });
     });
+
+    // Automatic Fading Gallery for Featured Project
+    function startImageSlider() {
+      const images = document.querySelectorAll('#phone-gallery .gallery-image');
+      if (images.length === 0) return;
+      
+      let currentImageIndex = 0;
+      
+      setInterval(() => {
+        // Fade out current
+        images[currentImageIndex].classList.remove('opacity-100');
+        images[currentImageIndex].classList.add('opacity-0');
+        
+        // Get next index
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        
+        // Fade in next
+        images[currentImageIndex].classList.remove('opacity-0');
+        images[currentImageIndex].classList.add('opacity-100');
+      }, 3000); // Change image every 3 seconds
+    }
+
+    // Start the slider
+    startImageSlider();
   </script>
 </body>
 </html>

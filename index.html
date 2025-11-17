@@ -328,6 +328,17 @@
     .mobile-menu-btn {
       display: none;
     }
+    
+    /* NEW: Mobile Menu Animation */
+    #mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-in-out;
+    }
+    #mobile-menu.menu-open {
+      max-height: 500px; /* Adjust if menu gets taller */
+    }
+
 
     /* Video Container */
     .video-container {
@@ -384,7 +395,7 @@
         </svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden bg-black border-t border-gray-800">
+    <div id="mobile-menu" class="bg-black border-t border-gray-800">
       <div class="flex flex-col px-6 py-4 space-y-4">
         <a href="about.html" class="hover:text-gray-400 transition">About</a>
         <a href="#skills" class="hover:text-gray-400 transition">Skills</a>
@@ -447,7 +458,7 @@
           </div>
           <div class="flex items-center gap-4">
             <i class="fab fa-instagram text-2xl"></i>
-            <a href="https://www.instagram.com/mthoko__n/" class="hover:text-gray-400 transition">Instagram</a>
+            <a href="httpswww.instagram.com/mthoko__n/" class="hover:text-gray-400 transition">Instagram</a>
           </div>
         </div>
       </div>
@@ -479,7 +490,7 @@
             <span class="px-4 py-2 border border-gray-700 rounded">FastAPI</span>
             <span class="px-4 py-2 border border-gray-700 rounded">Streamlit</span>
             <span class="px-4 py-2 border border-gray-700 rounded">Typer/TyperCLI</span>
-            <span class="px-4 py-2 border border-gray-700 rounded">NumPy</span>
+            <span classs="px-4 py-2 border border-gray-700 rounded">NumPy</span>
             <span class="px-4 py-2 border border-gray-700 rounded">Pandas</span>
             <span class="px-4 py-2 border border-gray-700 rounded">Threading/Multiprocessing</span>
             <span class="px-4 py-2 border border-gray-700 rounded">Jupyter</span>
@@ -738,19 +749,36 @@
     
     createParticles();
 
-    // Hero Title Hover Effect
+    // MODIFIED: Hero Title Effect (auto-toggles)
     const heroTitle = document.getElementById('heroTitle');
     let isHovered = false;
-    
+    let isToggled = false;
+    const originalText = 'MTHOKOZISI';
+    const hoverText = 'MR CEO';
+
     heroTitle.addEventListener('mouseenter', () => {
       isHovered = true;
-      heroTitle.textContent = 'MR CEO';
+      heroTitle.textContent = hoverText;
     });
     
     heroTitle.addEventListener('mouseleave', () => {
       isHovered = false;
-      heroTitle.textContent = 'MTHOKOZISI';
+      heroTitle.textContent = originalText;
+      isToggled = false; // Reset toggle state on mouse leave
     });
+
+    // Automatic toggle for mobile and non-hovered desktop
+    setInterval(() => {
+      if (!isHovered) { // Only run if the user is not hovering
+        if (isToggled) {
+          heroTitle.textContent = originalText;
+        } else {
+          heroTitle.textContent = hoverText;
+        }
+        isToggled = !isToggled; // Flip the state
+      }
+    }, 2000); // MODIFIED: Switch every 2 seconds
+
 
     // Magnetic Button Effect
     const magneticElements = document.querySelectorAll('.magnetic');
@@ -769,8 +797,7 @@
       });
     });
 
-    // 3D Tilt Effect for Skill Cards (MODIFIED)
-    // Only select cards within the #skills section
+    // 3D Tilt Effect for Skill Cards
     const skillCards = document.querySelectorAll('#skills .skill-card');
     
     skillCards.forEach(card => {
@@ -795,19 +822,19 @@
       });
     });
 
-    // Mobile Menu Toggle
+    // MODIFIED: Mobile Menu Toggle
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     
     mobileMenuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('menu-open'); // Toggle 'menu-open' class
     });
 
-    // Close mobile menu when clicking a link
+    // MODIFIED: Close mobile menu when clicking a link
     const mobileLinks = mobileMenu.querySelectorAll('a');
     mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('menu-open'); // Close menu
       });
     });
 

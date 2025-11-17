@@ -2,8 +2,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+  /* Critical CSS - Prevents FOUC */
+  html {
+    visibility: hidden;
+    opacity: 0;
+    scroll-behavior: smooth;  /* ← ADD THIS LINE */
+  }
+  
+  html.loaded {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+  }
+</style>
+
+<script>
+  // Show page as soon as DOM is ready
+  document.addEventListener('DOMContentLoaded', function() {
+    document.documentElement.classList.add('loaded');
+  });
+</script>
+
   <title>Mthokozisi Nxumalo | Software Engineer</title>
   <link rel="icon" href="Images/mrceo_logo.svg" sizes="32x32" type="image/svg+xml">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -24,10 +50,7 @@
       overflow-x: hidden;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
+  
     /* Hero Section */
     .hero {
       height: 100vh;

@@ -9,6 +9,28 @@
     gtag('js', new Date());
     gtag('config', 'G-5QVVC464C1');
   </script>
+
+  <style>
+  /* Critical CSS - Prevents FOUC */
+  html {
+    visibility: hidden;
+    opacity: 0;
+    scroll-behavior: smooth;
+  }
+  
+  html.loaded {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.documentElement.classList.add('loaded');
+  });
+</script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Design Work - Mthokozisi Nxumalo</title>
@@ -29,10 +51,6 @@
       background: #000;
       color: #fff;
       overflow-x: hidden;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     /* Floating Grid Background */
@@ -141,13 +159,24 @@
       transform: translateY(0);
     }
 
+    /* Mobile Menu */
     .mobile-menu-btn {
       display: none;
+    }
+    
+    #mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-in-out;
+    }
+    
+    #mobile-menu.menu-open {
+      max-height: 500px;
     }
 
     @media (max-width: 768px) {
       .desktop-nav {
-        display: none;
+        display: none !important;
       }
       
       .mobile-menu-btn {
@@ -179,30 +208,30 @@
 
   <!-- Navigation -->
   <nav>
-  <div class="max-w-7xl mx-auto px-6 py-2.5 flex justify-between items-center">
-    <a href="index.html" class="flex items-center">
-      <img src="Images/mrceo_logo.svg" alt="Logo" class="h-14 w-14 object-contain hover:opacity-80 transition-opacity cursor-pointer">
-    </a>
-    <div class="desktop-nav flex gap-8">
-      <a href="index.html" class="hover:text-gray-400 transition">Home</a>
-      <a href="about.html" class="hover:text-gray-400 transition">About</a>
-      <a href="contact.html" class="hover:text-gray-400 transition">Contact</a>
+    <div class="max-w-7xl mx-auto px-6 py-2.5 flex justify-between items-center">
+      <a href="index.html" class="flex items-center">
+        <img src="Images/mrceo_logo.svg" alt="Logo" class="h-14 w-14 object-contain hover:opacity-80 transition-opacity cursor-pointer">
+      </a>
+      <div class="desktop-nav flex gap-8">
+        <a href="index.html" class="hover:text-gray-400 transition">Home</a>
+        <a href="about.html" class="hover:text-gray-400 transition">About</a>
+        <a href="contact.html" class="hover:text-gray-400 transition">Contact</a>
+      </div>
+      <button class="mobile-menu-btn text-white" id="mobile-menu-toggle">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
     </div>
-    <button class="mobile-menu-btn text-white" id="mobile-menu-toggle">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button>
-  </div>
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden bg-black border-t border-gray-800">
-    <div class="flex flex-col px-6 py-3 space-y-3">
-      <a href="index.html" class="hover:text-gray-400 transition">Home</a>
-      <a href="about.html" class="hover:text-gray-400 transition">About</a>
-      <a href="contact.html" class="hover:text-gray-400 transition">Contact</a>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="bg-black border-t border-gray-800">
+      <div class="flex flex-col px-6 py-3 space-y-3">
+        <a href="index.html" class="hover:text-gray-400 transition">Home</a>
+        <a href="about.html" class="hover:text-gray-400 transition">About</a>
+        <a href="contact.html" class="hover:text-gray-400 transition">Contact</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
   <!-- Hero Section -->
   <section class="hero-section pt-20 px-6">
@@ -350,14 +379,14 @@
     const mobileMenu = document.getElementById('mobile-menu');
     
     mobileMenuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('menu-open');
     });
 
     // Close mobile menu when clicking a link
     const mobileLinks = mobileMenu.querySelectorAll('a');
     mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('menu-open');
       });
     });
 

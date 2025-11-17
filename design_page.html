@@ -2,203 +2,380 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5QVVC464C1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-5QVVC464C1');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5QVVC464C1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5QVVC464C1');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Design Work</title>
+  <title>Design Work - Mthokozisi Nxumalo</title>
   <link rel="icon" href="Images/Mr-CEO-logo.png" sizes="32x32" type="image/png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="script.js" defer></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    /* Scroll Animation */
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Floating Grid Background */
+    .grid-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridMove 20s linear infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(0,0,0,0.9);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      min-height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Fade In Animation */
     .fade-in {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      transform: translateY(30px);
+      animation: fadeIn 1s ease forwards;
     }
 
-    .fade-in.visible {
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Project Cards */
+    .project-card {
+      background: #000;
+      border: 1px solid #333;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .project-card:hover::before {
+      left: 100%;
+    }
+
+    .project-card:hover {
+      border-color: #666;
+      transform: translateY(-5px);
+    }
+
+    .project-card img {
+      transition: all 0.4s ease;
+      filter: grayscale(100%);
+    }
+
+    .project-card:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+
+    /* Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Smooth scroll */
-    html {
-      scroll-behavior: smooth;
+    .mobile-menu-btn {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+
+    /* Instagram Button */
+    .instagram-btn {
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .instagram-btn:hover {
+      animation: none;
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(255,255,255,0.3);
     }
   </style>
 </head>
-<body class="bg-[#141414] text-[#eaeaea] overflow-x-hidden">
-    <!-- Navbar -->
-    <header class="max-w-screen-xl mx-auto mt-6 border border-[#333333] bg-[#1f1f1f] rounded-lg px-6">
-      <div class="flex justify-between items-center py-4">
-        <a href="index.html" class="flex items-center space-x-2">
-          <img src="images/Mr CEO logo.svg" alt="Mr CEO Logo" class="h-10 max-h-10 object-contain">
-          <span class="text-[#eaeaea] text-xl font-bold">Mr CEO</span>
-        </a>
-  
-        <!-- Hamburger Icon -->
-        <div class="lg:hidden ml-auto">
-          <button id="hamburger-btn" class="text-[#2d2b2a]">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button>
-        </div>
-  
-        <nav class="hidden lg:flex space-x-6">
-          <a href="about.html" class="text-[#eaeaea] hover:text-[#7d6f5a] transition">About</a>
-          <a href="contact.html" class="text-[#eaeaea] hover:text-[#7d6f5a] transition">Contact</a>
-        </nav>
+<body>
+  <!-- Grid Background -->
+  <div class="grid-bg"></div>
 
-        <div id="mobile-menu" class="lg:hidden hidden absolute top-0 left-0 w-full bg-[#e4d3c3]">
-            <nav class="flex flex-col items-center py-4 space-y-4">
-              <a href="about.html" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition transform active:scale-95 hover:scale-95">About</a>
-              <a href="contact.html" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition transform active:scale-95 hover:scale-95">Contact</a>
-              <!-- Close Button (optional) -->
-              <button id="close-menu" class="text-[#2d2b2a] font-poppins mt-4">[x]</button>
-            </nav>
-          </div>
-    
-
-
-
+  <!-- Navigation -->
+  <nav>
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold tracking-wider hover:text-gray-400 transition">MN</a>
+      <div class="desktop-nav flex gap-8">
+        <a href="index.html" class="hover:text-gray-400 transition">Home</a>
+        <a href="about.html" class="hover:text-gray-400 transition">About</a>
+        <a href="contact.html" class="hover:text-gray-400 transition">Contact</a>
       </div>
-    </header>
-  
-    <!-- Main Section -->
-    <section id="design-work" class="container max-w-screen-xl mx-auto mt-10 mb-16 px-6">
-      <h2 class="text-4xl font-bold text-center mb-8 text-[#eaeaea]">Design Projects</h2>
-      <div class="space-y-6 max-w-4xl mx-auto">
-       <!-- Project 1 -->
-<div class="bg-[#1f1f1f] p-4 rounded-lg shadow-lg flex flex-col lg:flex-row items-center lg:space-x-6 space-y-4 lg:space-y-0 fade-in">
-  <!-- Image -->
-  <div class="w-60 h-40 bg-[#333333] rounded-lg overflow-hidden">
-      <img src="Images/Luke logo.jpg" alt="Design Project 1" class="w-full h-full object-cover">
-  </div>
-  <!-- Description -->
-  <div class="flex-1">
-      <h3 class="text-xl font-semibold text-[#eaeaea]">Luke Crane & Projects</h3>
-      <p class="text-[#b3b3b3] text-sm mt-2">The logo for Luke Crane and Projects is a modern design that represents precision, strength, and innovation. Featuring a blue crane, it symbolizes the company's focus on construction and large-scale projects. The crane's dynamic posture conveys movement and progress, while the blue color evokes trust and professionalism.</p>
-  </div>
-</div>
+      <button class="mobile-menu-btn text-white" id="mobile-menu-toggle">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden bg-black border-t border-gray-800">
+      <div class="flex flex-col px-6 py-4 space-y-4">
+        <a href="index.html" class="hover:text-gray-400 transition">Home</a>
+        <a href="about.html" class="hover:text-gray-400 transition">About</a>
+        <a href="contact.html" class="hover:text-gray-400 transition">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-<!-- Project 2 -->
-<div class="bg-[#1f1f1f] p-4 rounded-lg shadow-lg flex flex-col lg:flex-row items-center lg:space-x-6 space-y-4 lg:space-y-0 fade-in">
-  <!-- Image -->
-  <div class="w-60 h-40 bg-[#333333] rounded-lg overflow-hidden">
-      <img src="Images/Music lounge logo.jpg" alt="Design Project 2" class="w-full h-full object-cover">
-  </div>
-  <!-- Description -->
-  <div class="flex-1">
-      <h3 class="text-xl font-semibold text-[#eaeaea]">The Ultimate Music Lounge</h3>
-      <p class="text-[#b3b3b3] text-sm mt-2">The logo for The Ultimate Music Lounge features a gold guitar as the "G" in "Lounge" and "I" in music, symbolizing the venue's dedication to music and entertainment. The combination of elegant typography and the gold guitar element reflects a premium, vibrant atmosphere, appealing to music lovers.</p>
-  </div>
-</div>
+  <!-- Hero Section -->
+  <section class="hero-section pt-20 px-6">
+    <div class="max-w-6xl mx-auto text-center fade-in">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6">DESIGN WORK</h1>
+      <div class="w-20 h-1 bg-white mx-auto mb-8"></div>
+      <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+        A collection of logo designs and branding projects
+      </p>
+    </div>
+  </section>
 
-<!-- Project 3 -->
-<div class="bg-[#1f1f1f] p-4 rounded-lg shadow-lg flex flex-col lg:flex-row items-center lg:space-x-6 space-y-4 lg:space-y-0 fade-in">
-  <!-- Image -->
-  <div class="w-60 h-40 bg-[#333333] rounded-lg overflow-hidden">
-      <img src="Images/Luvuno logo.jpg" alt="Design Project 3" class="w-full h-full object-cover">
-  </div>
-  <!-- Description -->
-  <div class="flex-1">
-      <h3 class="text-xl font-semibold text-[#eaeaea]">Luvuno</h3>
-      <p class="text-[#b3b3b3] text-sm mt-2">The logo for Luvuno Nail and Beauty Bar combines elegance and nature, with a green leaf incorporated into the "V" of "Luvuno." This design element reflects the business's commitment to natural beauty and self-care, while the clean, modern typography adds sophistication.</p>
-  </div>
-</div>
+  <!-- Projects Section -->
+  <section class="py-20 px-6 relative z-10">
+    <div class="max-w-6xl mx-auto space-y-8">
+      
+      <!-- Project 1 -->
+      <div class="project-card p-6 rounded-lg reveal">
+        <div class="flex flex-col lg:flex-row gap-6 items-center">
+          <div class="w-full lg:w-72 h-48 bg-[#111] rounded-lg overflow-hidden flex-shrink-0">
+            <img src="Images/Luke logo.jpg" alt="Luke Crane & Projects" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold mb-3">Luke Crane & Projects</h3>
+            <p class="text-gray-400 leading-relaxed">
+              A modern logo design representing precision, strength, and innovation. Featuring a blue crane, it symbolizes the company's focus on construction and large-scale projects. The crane's dynamic posture conveys movement and progress, while the blue color evokes trust and professionalism.
+            </p>
+          </div>
+        </div>
+      </div>
 
-<!-- Project 4 -->
-<div class="bg-[#1f1f1f] p-4 rounded-lg shadow-lg flex flex-col lg:flex-row items-center lg:space-x-6 space-y-4 lg:space-y-0 fade-in">
-  <!-- Image -->
-  <div class="w-60 h-40 bg-[#333333] rounded-lg overflow-hidden">
-      <img src="Images/Ziyanda logo.jpg" alt="Design Project 3" class="w-full h-full object-cover">
-  </div>
-  <!-- Description -->
-  <div class="flex-1">
-      <h3 class="text-xl font-semibold text-[#eaeaea]">Ziyanda Trading</h3>
-      <p class="text-[#b3b3b3] text-sm mt-2">The logo for Ziyanda Trading features a simple yet bold "ZT" motif, representing the company’s streamlined approach to business. The clean and minimal design reflects professionalism and efficiency, making it suitable for a wide range of industries.</p>
-  </div>
-</div>
+      <!-- Project 2 -->
+      <div class="project-card p-6 rounded-lg reveal">
+        <div class="flex flex-col lg:flex-row gap-6 items-center">
+          <div class="w-full lg:w-72 h-48 bg-[#111] rounded-lg overflow-hidden flex-shrink-0">
+            <img src="Images/Music lounge logo.jpg" alt="The Ultimate Music Lounge" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold mb-3">The Ultimate Music Lounge</h3>
+            <p class="text-gray-400 leading-relaxed">
+              Features a gold guitar as the "G" in "Lounge" and "I" in music, symbolizing the venue's dedication to music and entertainment. The combination of elegant typography and the gold guitar element reflects a premium, vibrant atmosphere, appealing to music lovers.
+            </p>
+          </div>
+        </div>
+      </div>
 
-<!-- Project 5 -->
-<div class="bg-[#1f1f1f] p-4 rounded-lg shadow-lg flex flex-col lg:flex-row items-center lg:space-x-6 space-y-4 lg:space-y-0 fade-in">
-  <!-- Image -->
-  <div class="w-60 h-40 bg-[#333333] rounded-lg overflow-hidden">
-      <img src="Images/macc logo.jpg" alt="Design Project 3" class="w-full h-full object-cover">
-  </div>
-  <!-- Description -->
-  <div class="flex-1">
-      <h3 class="text-xl font-semibold text-[#eaeaea]">Macc Gee</h3>
-      <p class="text-[#b3b3b3] text-sm mt-2">The logo for Macc Gee, a clothing brand by popular social media influencer @macc_gee (Lesedi McGlory Riba), uses a clean, straightforward text-based design. This minimalist approach highlights the brand's focus on style and authenticity.</p>
-  </div>
-</div>
+      <!-- Project 3 -->
+      <div class="project-card p-6 rounded-lg reveal">
+        <div class="flex flex-col lg:flex-row gap-6 items-center">
+          <div class="w-full lg:w-72 h-48 bg-[#111] rounded-lg overflow-hidden flex-shrink-0">
+            <img src="Images/Luvuno logo.jpg" alt="Luvuno Nail and Beauty Bar" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold mb-3">Luvuno Nail and Beauty Bar</h3>
+            <p class="text-gray-400 leading-relaxed">
+              Combines elegance and nature, with a green leaf incorporated into the "V" of "Luvuno." This design element reflects the business's commitment to natural beauty and self-care, while the clean, modern typography adds sophistication.
+            </p>
+          </div>
+        </div>
+      </div>
 
-<!-- Project 6 -->
-<div class="bg-[#1f1f1f] p-4 rounded-lg shadow-lg flex flex-col lg:flex-row items-center lg:space-x-6 space-y-4 lg:space-y-0 fade-in">
-  <!-- Image -->
-  <div class="w-60 h-40 bg-[#333333] rounded-lg overflow-hidden">
-      <img src="Images/farm logo.jpg" alt="Design Project 3" class="w-full h-full object-cover">
-  </div>
-  <!-- Description -->
-  <div class="flex-1">
-      <h3 class="text-xl font-semibold text-[#eaeaea]">Shriekplaas Farm</h3>
-      <p class="text-[#b3b3b3] text-sm mt-2">The logo for Shriekplaas Farm is a simple, timeless design that evokes the essence of farm life. With natural elements and earthy tones, the logo reflects the farm’s commitment to sustainability, agriculture, and community.</p>
-  </div>
-</div>
+      <!-- Project 4 -->
+      <div class="project-card p-6 rounded-lg reveal">
+        <div class="flex flex-col lg:flex-row gap-6 items-center">
+          <div class="w-full lg:w-72 h-48 bg-[#111] rounded-lg overflow-hidden flex-shrink-0">
+            <img src="Images/Ziyanda logo.jpg" alt="Ziyanda Trading" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold mb-3">Ziyanda Trading</h3>
+            <p class="text-gray-400 leading-relaxed">
+              Features a simple yet bold "ZT" motif, representing the company's streamlined approach to business. The clean and minimal design reflects professionalism and efficiency, making it suitable for a wide range of industries.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-card p-6 rounded-lg reveal">
+        <div class="flex flex-col lg:flex-row gap-6 items-center">
+          <div class="w-full lg:w-72 h-48 bg-[#111] rounded-lg overflow-hidden flex-shrink-0">
+            <img src="Images/macc logo.jpg" alt="Macc Gee" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold mb-3">Macc Gee</h3>
+            <p class="text-gray-400 leading-relaxed">
+              A clothing brand logo by popular social media influencer @macc_gee (Lesedi McGlory Riba), using a clean, straightforward text-based design. This minimalist approach highlights the brand's focus on style and authenticity.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="project-card p-6 rounded-lg reveal">
+        <div class="flex flex-col lg:flex-row gap-6 items-center">
+          <div class="w-full lg:w-72 h-48 bg-[#111] rounded-lg overflow-hidden flex-shrink-0">
+            <img src="Images/farm logo.jpg" alt="Shriekplaas Farm" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold mb-3">Shriekplaas Farm</h3>
+            <p class="text-gray-400 leading-relaxed">
+              A simple, timeless design that evokes the essence of farm life. With natural elements and earthy tones, the logo reflects the farm's commitment to sustainability, agriculture, and community.
+            </p>
+          </div>
+        </div>
+      </div>
 
     </div>
-    
-       <!-- Instagram Section -->
-<div class="flex items-center justify-center space-x-3 mt-6 text-[#eaeaea] mb-8 animate-bounce">
-  <!-- Instagram Text and Icon Inline -->
-  <a href="https://www.instagram.com/mrceo.lab/" target="_blank" class="flex items-center space-x-2 text-lg hover:text-[#7d6f5a] active:scale-95 transition-all">
-    <p class="text-lg">See more designs on my Instagram</p>
-    <!-- Instagram Icon (using FontAwesome) -->
-    <i class="fab fa-instagram text-2xl"></i>
-  </a>
-</div>
 
+    <!-- Instagram CTA -->
+    <div class="max-w-6xl mx-auto mt-16 text-center">
+      <div class="project-card p-12 rounded-lg">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Want to See More?</h2>
+        <p class="text-xl text-gray-400 mb-8">
+          Check out my Instagram for more design projects and creative work
+        </p>
+        <a href="https://www.instagram.com/mrceo.lab/" target="_blank" class="instagram-btn inline-flex items-center gap-3 px-8 py-4 border border-white hover:bg-white hover:text-black transition">
+          <i class="fab fa-instagram text-2xl"></i>
+          <span class="text-lg font-semibold">@mrceo.lab</span>
+        </a>
       </div>
-    </section>
-  
-    <footer class="text-center mt-10 py-6 bg-[#1f1f1f] text-[#b3b3b3]">
-      <div class="container mx-auto px-4">
-        <p class="text-sm sm:text-base">&copy; 2024 Mthokozisi Nxumalo. All rights reserved.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-800 py-8 px-6 bg-black relative z-10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>© 2024 Mthokozisi Nxumalo</div>
+      <div class="flex gap-6">
+        <a href="https://www.linkedin.com/in/mthokozisi-nxumalo/" class="hover:text-gray-400 transition">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/mthoko-n" class="hover:text-gray-400 transition">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://x.com/mthoko__n" class="hover:text-gray-400 transition">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Reveal on Scroll
+    const reveals = document.querySelectorAll('.reveal');
+    
+    const revealOnScroll = () => {
+      reveals.forEach(element => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
         
-      </div>
-    </footer>
-    
+        if (elementTop < windowHeight - elementVisible) {
+          element.classList.add('active');
+        }
+      });
+    };
 
-    <script>
-      // JavaScript to add visibility class on scroll
-      const fadeInElements = document.querySelectorAll('.fade-in');
-
-      const handleScroll = () => {
-        fadeInElements.forEach(el => {
-          const rect = el.getBoundingClientRect();
-          if (rect.top < window.innerHeight) {
-            el.classList.add('visible');
-          }
-        });
-      };
-
-      window.addEventListener('scroll', handleScroll);
-      handleScroll(); // Check on initial load
-    </script>
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  </script>
 </body>
 </html>

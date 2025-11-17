@@ -1,246 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5QVVC464C1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-5QVVC464C1');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5QVVC464C1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5QVVC464C1');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Me</title>
+  <title>Contact - Mthokozisi Nxumalo</title>
   <link rel="icon" href="Images/Mr-CEO-logo.png" sizes="32x32" type="image/png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="script.js" defer></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* Floating Particles Animation (Contrail) */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Floating Grid Background */
+    .grid-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridMove 20s linear infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(0,0,0,0.9);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      min-height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Fade In Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Contact Card */
+    .contact-card {
+      background: #000;
+      border: 1px solid #333;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .contact-card:hover::before {
+      left: 100%;
+    }
+
+    .contact-card:hover {
+      border-color: #666;
+      transform: translateY(-5px);
+    }
+
+    /* Contact Item */
+    .contact-item {
+      transition: all 0.3s ease;
+      border-bottom: 1px solid #222;
+      padding: 1.5rem 0;
+    }
+
+    .contact-item:last-child {
+      border-bottom: none;
+    }
+
+    .contact-item:hover {
+      padding-left: 10px;
+    }
+
+    .contact-item a {
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    .contact-item a:hover {
+      color: #999;
+    }
+
+    /* Button Hover */
+    .btn-hover {
+      transition: all 0.3s ease;
+    }
+
+    .btn-hover:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+
+    /* Floating Particles */
     @keyframes floatParticles {
       0% {
         transform: translateY(0) rotate(0deg);
-        opacity: 1;
+        opacity: 0.3;
       }
       50% {
-        transform: translateY(-20px) rotate(180deg);
-        opacity: 0.5;
+        transform: translateY(-30px) rotate(180deg);
+        opacity: 0.6;
       }
       100% {
         transform: translateY(0) rotate(360deg);
-        opacity: 0;
+        opacity: 0.3;
       }
     }
 
     .particle {
-      position: absolute;
-      background-color: rgba(255, 255, 255, 0.7);
+      position: fixed;
+      background-color: rgba(255, 255, 255, 0.1);
       border-radius: 50%;
-      animation: floatParticles 4s linear infinite;
+      animation: floatParticles 8s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 1;
     }
 
-    /* Random positioning of particles */
     .particle:nth-child(1) {
       top: 20%;
-      left: 30%;
-      width: 10px;
-      height: 10px;
-      animation-duration: 5s;
+      left: 10%;
+      width: 8px;
+      height: 8px;
+      animation-duration: 6s;
     }
 
     .particle:nth-child(2) {
-      top: 50%;
-      left: 60%;
+      top: 60%;
+      left: 80%;
       width: 12px;
       height: 12px;
-      animation-duration: 6s;
+      animation-duration: 8s;
       animation-delay: 2s;
     }
 
     .particle:nth-child(3) {
-      top: 10%;
-      left: 80%;
-      width: 15px;
-      height: 15px;
-      animation-duration: 7s;
-      animation-delay: 3s;
-    }
-
-    .particle:nth-child(4) {
-      top: 70%;
-      left: 50%;
-      width: 20px;
-      height: 20px;
-      animation-duration: 8s;
-      animation-delay: 4s;
-    }
-
-    .particle:nth-child(5) {
       top: 40%;
-      left: 20%;
-      width: 18px;
-      height: 18px;
-      animation-duration: 9s;
+      right: 20%;
+      width: 10px;
+      height: 10px;
+      animation-duration: 7s;
       animation-delay: 1s;
     }
 
-    /* Button Hover and Click Animation */
-    .contact-btn {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.75rem 2rem;
-      background: linear-gradient(90deg, #7d6f5a, #f5e0c0);
-      color: #121212;
-      font-weight: bold;
-      font-size: 1.25rem;
-      border-radius: 1.25rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .contact-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .contact-btn:active {
-      transform: scale(0.95);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    }
-
-    /* Full page layout */
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      background-color: #121212;
-      color: #eaeaea;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .contact-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 2rem;
-      position: relative;
-    }
-
-    /* Contact Box Styling */
-    .contact-box {
-      background-color: rgba(31, 31, 31, 0.8);
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-      width: 100%;
-      max-width: 600px;
-    }
-
-    .contact-box h3 {
-      font-size: 2rem;
-      color: #eaeaea;
-      margin-bottom: 1rem;
-    }
-
-    .contact-box p {
-      color: #eaeaea;
-      margin: 0.5rem 0;
-    }
-
-    .contact-box a {
-      color: #ffffff;
-      transition: color 0.3s ease;
-    }
-
-    .contact-box a:hover {
-      color: #eaeaea;
+    .particle:nth-child(4) {
+      bottom: 30%;
+      left: 30%;
+      width: 6px;
+      height: 6px;
+      animation-duration: 9s;
+      animation-delay: 3s;
     }
   </style>
 </head>
+<body>
+  <!-- Grid Background -->
+  <div class="grid-bg"></div>
 
-<body class="relative">
-  <!-- Firework Contrail Animation (Particles Floating) -->
-  <div class="particle"></div>
+  <!-- Floating Particles -->
   <div class="particle"></div>
   <div class="particle"></div>
   <div class="particle"></div>
   <div class="particle"></div>
 
-  <!-- Navbar -->
-  <header class="max-w-screen-xl mx-auto mt-6 border border-[#333333] bg-[#1f1f1f] rounded-lg px-6">
-    <div class="flex justify-between items-center py-4">
-      <a href="index.html" class="flex items-center space-x-2">
-        <img src="images/Mr CEO logo.svg" alt="Mr CEO Logo" class="h-10 max-h-10 object-contain">
-        <span class="text-[#eaeaea] text-xl font-semibold">Mr CEO</span>
-      </a>
-      <!-- Hamburger Icon -->
-      <div class="lg:hidden ml-auto">
-        <button id="hamburger-btn" class="text-[#2d2b2a]">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
+  <!-- Navigation -->
+  <nav>
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold tracking-wider hover:text-gray-400 transition">MN</a>
+      <div class="desktop-nav flex gap-8">
+        <a href="index.html" class="hover:text-gray-400 transition">Home</a>
+        <a href="about.html" class="hover:text-gray-400 transition">About</a>
+        <a href="design_page.html" class="hover:text-gray-400 transition">Design Work</a>
+      </div>
+      <button class="mobile-menu-btn text-white" id="mobile-menu-toggle">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden bg-black border-t border-gray-800">
+      <div class="flex flex-col px-6 py-4 space-y-4">
+        <a href="index.html" class="hover:text-gray-400 transition">Home</a>
+        <a href="about.html" class="hover:text-gray-400 transition">About</a>
+        <a href="design_page.html" class="hover:text-gray-400 transition">Design Work</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section pt-20 px-6">
+    <div class="max-w-6xl mx-auto text-center fade-in">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6">GET IN TOUCH</h1>
+      <div class="w-20 h-1 bg-white mx-auto mb-8"></div>
+      <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+        Let's discuss your project or opportunity
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-20 px-6 relative z-10">
+    <div class="max-w-4xl mx-auto">
+      
+      <!-- Main Contact Card -->
+      <div class="contact-card p-8 md:p-12 rounded-lg mb-8">
+        <h2 class="text-3xl font-bold mb-8 text-center">CONTACT INFORMATION</h2>
+        
+        <div class="space-y-0">
+          <!-- Email -->
+          <div class="contact-item">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-envelope text-2xl"></i>
+                <span class="text-gray-400 text-sm uppercase tracking-wider">Email</span>
+              </div>
+              <a href="mailto:nxumalomthokozisi7@gmail.com" class="text-lg md:text-xl font-light break-all">
+                nxumalomthokozisi7@gmail.com
+              </a>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="contact-item">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-phone text-2xl"></i>
+                <span class="text-gray-400 text-sm uppercase tracking-wider">Phone</span>
+              </div>
+              <a href="tel:0737789400" class="text-lg md:text-xl font-light">
+                073 778 9400
+              </a>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="contact-item">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-map-marker-alt text-2xl"></i>
+                <span class="text-gray-400 text-sm uppercase tracking-wider">Location</span>
+              </div>
+              <span class="text-lg md:text-xl font-light">
+                Johannesburg, Gauteng
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="mt-12 text-center">
+          <a href="mailto:nxumalomthokozisi7@gmail.com" class="btn-hover inline-block px-8 py-4 border border-white hover:bg-white hover:text-black transition text-lg">
+            <i class="fas fa-paper-plane mr-2"></i>
+            SEND EMAIL
+          </a>
+        </div>
       </div>
 
-      <nav class="hidden lg:flex space-x-6">
-        <a href="about.html" class="text-[#eaeaea] hover:text-[#7d6f5a] transition">About</a>
-        <a href="design_page.html" class="text-[#eaeaea] hover:text-[#7d6f5a] transition">Design work</a>
-      </nav>
+      <!-- Social Links Card -->
+      <div class="contact-card p-8 rounded-lg">
+        <h3 class="text-2xl font-bold mb-6 text-center">CONNECT WITH ME</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <a href="https://www.linkedin.com/in/mthokozisi-nxumalo/" class="flex flex-col items-center gap-3 hover:text-gray-400 transition">
+            <i class="fab fa-linkedin text-4xl"></i>
+            <span class="text-sm">LinkedIn</span>
+          </a>
+          <a href="https://github.com/mthoko-n" class="flex flex-col items-center gap-3 hover:text-gray-400 transition">
+            <i class="fab fa-github text-4xl"></i>
+            <span class="text-sm">GitHub</span>
+          </a>
+          <a href="https://x.com/mthoko__n" class="flex flex-col items-center gap-3 hover:text-gray-400 transition">
+            <i class="fab fa-twitter text-4xl"></i>
+            <span class="text-sm">Twitter</span>
+          </a>
+          <a href="https://www.instagram.com/mthoko__n/" class="flex flex-col items-center gap-3 hover:text-gray-400 transition">
+            <i class="fab fa-instagram text-4xl"></i>
+            <span class="text-sm">Instagram</span>
+          </a>
+        </div>
+      </div>
 
-      <!-- Section for mobile navlinks -->
-      <div id="mobile-menu" class="lg:hidden hidden absolute top-0 left-0 w-full bg-[#e4d3c3]">
-        <nav class="flex flex-col items-center py-4 space-y-4">
-          <a href="about.html" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition transform active:scale-95 hover:scale-95">About</a>
-          <a href="design_page.html" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition transform active:scale-95 hover:scale-95">Design Work</a>
-          <!-- Close Button (optional) -->
-          <button id="close-menu" class="text-[#2d2b2a] font-poppins mt-4">[x]</button>
-        </nav>
+      <!-- Availability Notice -->
+      <div class="mt-8 text-center">
+        <p class="text-gray-400 text-lg">
+          <i class="fas fa-circle text-green-500 text-xs mr-2 animate-pulse"></i>
+          Available for opportunities
+        </p>
       </div>
 
     </div>
-  </header>
-
-\
-  <!-- Contact Section -->
-<section class="contact-container px-4 sm:px-6">
-  <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-[#eaeaea] text-center">
-    Get in Touch
-  </h2>
-
-  <div class="contact-box mx-auto text-center md:max-w-lg">
-    <h3 class="text-xl sm:text-2xl font-semibold mb-4">Contact Information</h3>
-    <p class="text-sm sm:text-base"><strong>Phone:</strong> 
-      <a href="tel:0737789400" class="text-[#7d6f5a] hover:underline">073 778 9400</a>
-    </p>
-    <p class="text-sm sm:text-base"><strong>Email:</strong> 
-      <a href="mailto:nxumalomthokozisi7@gmail.com" class="text-[#7d6f5a] hover:underline">nxumalomthokozisi7@gmail.com</a>
-    </p>
-    <p class="text-sm sm:text-base"><strong>Address:</strong> Johannesburg, Gauteng</p>
-
-    <a href="mailto:nxumalomthokozisi7@gmail.com" 
-      class="contact-btn mt-6 sm:mt-8 inline-block text-center px-6 py-3 w-full sm:w-auto">
-      Send me an email
-    </a>
-  </div>
-</section>
-
+  </section>
 
   <!-- Footer -->
-  <footer class="text-center mt-10 py-6 bg-[#1f1f1f] text-[#b3b3b3]">
-    <div class="container mx-auto px-4">
-      <p class="text-sm sm:text-base">&copy; 2024 Mthokozisi Nxumalo. All rights reserved.</p>
-  
+  <footer class="border-t border-gray-800 py-8 px-6 bg-black relative z-10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>© 2024 Mthokozisi Nxumalo</div>
+      <div class="flex gap-6">
+        <a href="https://www.linkedin.com/in/mthokozisi-nxumalo/" class="hover:text-gray-400 transition">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/mthoko-n" class="hover:text-gray-400 transition">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://x.com/mthoko__n" class="hover:text-gray-400 transition">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
     </div>
   </footer>
-  
 
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
 </body>
-
 </html>

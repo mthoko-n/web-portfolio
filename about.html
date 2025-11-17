@@ -1,173 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5QVVC464C1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-5QVVC464C1');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5QVVC464C1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5QVVC464C1');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Me - Mr CEO</title>
+  <title>About - Mthokozisi Nxumalo</title>
   <link rel="icon" href="images/Mr-CEO-logo.png" sizes="32x32" type="image/png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="script.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    /* Contrail background animation */
-    .background {
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Floating Grid Background */
+    .grid-bg {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridMove 20s linear infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(0,0,0,0.9);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Fade In Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Content Cards */
+    .content-card {
+      background: #000;
+      border: 1px solid #333;
+      transition: all 0.3s ease;
+      position: relative;
       overflow: hidden;
-      z-index: -1;
     }
 
-    .background div {
+    .content-card::before {
+      content: '';
       position: absolute;
-      width: 5px;
-      height: 100px;
-      background: linear-gradient(90deg, #ffcc70, #ff8c42, #ff2e63);
-      animation: moveTrail 10s linear infinite;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+      transition: left 0.5s ease;
     }
 
-    .background div:nth-child(1) {
-      left: 10%;
-      animation-delay: 0s;
+    .content-card:hover::before {
+      left: 100%;
     }
 
-    .background div:nth-child(2) {
-      left: 30%;
-      animation-delay: 2s;
+    .content-card:hover {
+      border-color: #666;
+      transform: translateY(-5px);
     }
 
-    .background div:nth-child(3) {
-      left: 50%;
-      animation-delay: 4s;
+    /* Button Hover */
+    .btn-hover {
+      transition: all 0.3s ease;
     }
 
-    .background div:nth-child(4) {
-      left: 70%;
-      animation-delay: 6s;
+    .btn-hover:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
     }
 
-    .background div:nth-child(5) {
-      left: 90%;
-      animation-delay: 8s;
+    .mobile-menu-btn {
+      display: none;
     }
 
-    @keyframes moveTrail {
-      0% {
-        top: 100%;
+    @media (max-width: 768px) {
+      .desktop-nav {
+        display: none;
       }
-
-      100% {
-        top: -10%;
+      
+      .mobile-menu-btn {
+        display: block;
       }
+    }
+
+    /* Skill Items */
+    .skill-item {
+      transition: all 0.3s ease;
+    }
+
+    .skill-item:hover {
+      transform: translateX(5px);
+      color: #fff;
+    }
+
+    /* Section Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
+<body>
+  <!-- Grid Background -->
+  <div class="grid-bg"></div>
 
-<body class="bg-[#141414] text-[#eaeaea] overflow-x-hidden relative">
-  <div class="background">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-
-  <!-- Navbar -->
-  <header class="max-w-screen-xl mx-auto mt-6 border border-[#333333] bg-[#1f1f1f] rounded-lg px-6">
-    <div class="flex justify-between items-center py-4">
-      <a href="index.html" class="flex items-center space-x-2">
-        <img src="images/Mr CEO logo.svg" alt="Mr CEO Logo" class="h-10 max-h-10 object-contain">
-        <span class="text-[#eaeaea] text-xl font-bold">Mr CEO</span>
-      </a>
-
-       <!-- Hamburger Icon -->
-     <div class="lg:hidden ml-auto">
-        <button id="hamburger-btn" class="text-[#2d2b2a]">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
+  <!-- Navigation -->
+  <nav>
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold tracking-wider hover:text-gray-400 transition">MN</a>
+      <div class="desktop-nav flex gap-8">
+        <a href="index.html" class="hover:text-gray-400 transition">Home</a>
+        <a href="index.html#skills" class="hover:text-gray-400 transition">Skills</a>
+        <a href="index.html#work" class="hover:text-gray-400 transition">Work</a>
+        <a href="contact.html" class="hover:text-gray-400 transition">Contact</a>
       </div>
-
-      <nav class="hidden lg:flex space-x-6">
-       
-        <a href="contact.html" class="text-[#eaeaea] hover:text-[#7d6f5a] transition">Contact</a>
-        <a href="design_page.html" class="text-[#eaeaea] hover:text-[#7d6f5a] transition">Design Work</a>
-      </nav>
-
-      <div id="mobile-menu" class="lg:hidden hidden absolute top-0 left-0 w-full bg-[#e4d3c3]">
-        <nav class="flex flex-col items-center py-4 space-y-4">
-          <a href="design_page.html" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition transform active:scale-95 hover:scale-95">Design Work</a>
-          <a href="contact.html" class="text-[#2d2b2a] hover:text-[#7d6f5a] transition transform active:scale-95 hover:scale-95">Contact</a>
-       
-          <!-- Close Button (optional) -->
-          <button id="close-menu" class="text-[#2d2b2a] font-poppins mt-4">[x]</button>
-        </nav>
+      <button class="mobile-menu-btn text-white" id="mobile-menu-toggle">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden bg-black border-t border-gray-800">
+      <div class="flex flex-col px-6 py-4 space-y-4">
+        <a href="index.html" class="hover:text-gray-400 transition">Home</a>
+        <a href="index.html#skills" class="hover:text-gray-400 transition">Skills</a>
+        <a href="index.html#work" class="hover:text-gray-400 transition">Work</a>
+        <a href="contact.html" class="hover:text-gray-400 transition">Contact</a>
       </div>
     </div>
+  </nav>
 
-    </div>
-  </header>
-
-  <!-- About Section -->
-  <section id="about" class="container max-w-screen-xl mx-auto mt-10 px-6">
-    <div class="flex flex-col items-center text-center">
-      <h1 class="text-5xl font-bold text-[#eaeaea] mb-4">Hello, I'm Mthokozisi Nxumalo</h1>
-      <p class="text-[#b3b3b3] text-lg max-w-3xl leading-relaxed mb-8">
-        I'm a Computer Science graduate from <strong>UKZN</strong>, currently thriving as a <strong>Software Engineer Intern</strong>. With a deep passion for technology and problem-solving, I aim to create innovative solutions that drive progress and impact the world. Beyond coding, I embrace challenges, foster growth, and cherish the opportunities to connect with people and ideas.
+  <!-- Hero Section -->
+  <section class="hero-section pt-20 px-6">
+    <div class="max-w-6xl mx-auto text-center fade-in">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6">ABOUT ME</h1>
+      <div class="w-20 h-1 bg-white mx-auto mb-8"></div>
+      <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+        Hello, I'm <span class="text-white font-semibold">Mthokozisi Nxumalo</span>
       </p>
-      <a href="contact.html" class="px-6 py-3 bg-[#7d6f5a] text-[#141414] font-semibold rounded-lg hover:bg-[#eaeaea] hover:text-[#7d6f5a] transition active:scale-90">Contact Me</a>
     </div>
+  </section>
 
-    <div class="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-10">
-      <!-- Skills Section -->
-      <div>
-        <h2 class="text-3xl font-bold text-[#eaeaea] mb-6">Expertise</h2>
-        <ul class="space-y-3 text-[#b3b3b3]">
-          <li>✔️ Python, Java, C#, Node.js</li>
-          <li>✔️ Web Development: HTML, CSS, JavaScript, Tailwind CSS</li>
-          <li>✔️ Docker,MongoDB, Unit Testing</li>
-          <li>✔️ Responsive UI/UX Design</li>
-          <li>✔️ Rest API</li>
-          <li>✔️ Problem-solving & Competitive Programming</li>
-        </ul>
-      </div>
-
-      <!-- Personal Details -->
-      <div>
-        <h2 class="text-3xl font-bold text-[#eaeaea] mb-6">A Little About Me</h2>
-        <p class="text-[#b3b3b3] leading-relaxed">
-          Born and raised in South Africa, I'm driven by a relentless curiosity to explore and innovate. My journey in technology started early and has since flourished into a career filled with learning and growth. I’m also a gamer (Fortnite & FC24), and a tech enthusiast passionate about making an impact both online and offline. My friends call me "Mr CEO" because of all my failed entrepreneurial ventures 😂😂 .
+  <!-- Main Content -->
+  <section class="py-20 px-6 relative z-10">
+    <div class="max-w-6xl mx-auto space-y-12">
+      
+      <!-- Introduction Card -->
+      <div class="content-card p-8 md:p-12 rounded-lg reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Who I Am</h2>
+        <p class="text-lg text-gray-300 leading-relaxed mb-4">
+          I'm a Computer Science graduate from <span class="text-white font-semibold">UKZN</span>, currently thriving as a <span class="text-white font-semibold">Junior Software Engineer</span>. With a deep passion for technology and problem-solving, I aim to create innovative solutions that drive progress and impact the world.
+        </p>
+        <p class="text-lg text-gray-300 leading-relaxed">
+          Beyond coding, I embrace challenges, foster growth, and cherish the opportunities to connect with people and ideas. I believe in the power of technology to transform lives and create meaningful change.
         </p>
       </div>
+
+      <!-- Two Column Layout -->
+      <div class="grid md:grid-cols-2 gap-8">
+        
+        <!-- Expertise -->
+        <div class="content-card p-8 rounded-lg reveal">
+          <h2 class="text-3xl font-bold mb-6 border-b border-gray-800 pb-4">EXPERTISE</h2>
+          <div class="space-y-4">
+            <div class="skill-item text-gray-400 flex items-start gap-3">
+              <span class="text-white mt-1">→</span>
+              <div>
+                <div class="text-white font-semibold">Programming Languages</div>
+                <div class="text-sm">Python, Dart, Java, C++, C#, JavaScript, ASP.NET</div>
+              </div>
+            </div>
+            <div class="skill-item text-gray-400 flex items-start gap-3">
+              <span class="text-white mt-1">→</span>
+              <div>
+                <div class="text-white font-semibold">Mobile Development</div>
+                <div class="text-sm">Flutter (Dart), Android Studio</div>
+              </div>
+            </div>
+            <div class="skill-item text-gray-400 flex items-start gap-3">
+              <span class="text-white mt-1">→</span>
+              <div>
+                <div class="text-white font-semibold">Python Ecosystem</div>
+                <div class="text-sm">FastAPI, Streamlit, Pandas, NumPy, Pytest</div>
+              </div>
+            </div>
+            <div class="skill-item text-gray-400 flex items-start gap-3">
+              <span class="text-white mt-1">→</span>
+              <div>
+                <div class="text-white font-semibold">Cloud & Infrastructure</div>
+                <div class="text-sm">AWS EC2, Google Compute Engine, Cloud Run, Terraform, CloudFormation</div>
+              </div>
+            </div>
+            <div class="skill-item text-gray-400 flex items-start gap-3">
+              <span class="text-white mt-1">→</span>
+              <div>
+                <div class="text-white font-semibold">DevOps & Monitoring</div>
+                <div class="text-sm">Docker, GitHub Actions, Grafana, Loki, CloudWatch</div>
+              </div>
+            </div>
+            <div class="skill-item text-gray-400 flex items-start gap-3">
+              <span class="text-white mt-1">→</span>
+              <div>
+                <div class="text-white font-semibold">Databases & APIs</div>
+                <div class="text-sm">MongoDB, MySQL, Redis, RESTful APIs, Swagger, Postman</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Personal Side -->
+        <div class="content-card p-8 rounded-lg reveal">
+          <h2 class="text-3xl font-bold mb-6 border-b border-gray-800 pb-4">BEYOND CODE</h2>
+          <p class="text-gray-300 leading-relaxed mb-6">
+            Born and raised in South Africa, I'm driven by a relentless curiosity to explore and innovate. My journey in technology started early and has since flourished into a career filled with learning and growth.
+          </p>
+          <p class="text-gray-300 leading-relaxed mb-6">
+            I'm also a gamer (Fortnite & FC24), and a tech enthusiast passionate about making an impact both online and offline. My friends call me "Mr CEO" because of all my failed entrepreneurial ventures 😂
+          </p>
+          <div class="pt-6 border-t border-gray-800">
+            <div class="text-sm text-gray-500 mb-3">CONNECT WITH ME</div>
+            <div class="flex gap-4">
+              <a href="https://www.linkedin.com/in/mthokozisi-nxumalo/" class="text-2xl hover:text-gray-400 transition">
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="https://github.com/mthoko-n" class="text-2xl hover:text-gray-400 transition">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://x.com/mthoko__n" class="text-2xl hover:text-gray-400 transition">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://www.instagram.com/mthoko__n/" class="text-2xl hover:text-gray-400 transition">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="content-card p-12 rounded-lg text-center reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Let's Build Something Amazing</h2>
+        <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+          I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+        </p>
+        <a href="contact.html" class="btn-hover inline-block px-8 py-4 border border-white hover:bg-white hover:text-black transition">
+          GET IN TOUCH
+        </a>
+      </div>
+
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="text-center mt-10 py-6 bg-[#1f1f1f] text-[#b3b3b3]">
-    <div class="container mx-auto px-4">
-      <p class="text-sm sm:text-base">&copy; 2024 Mthokozisi Nxumalo. All rights reserved.</p>
-      
+  <footer class="border-t border-gray-800 py-8 px-6 bg-black relative z-10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>© 2024 Mthokozisi Nxumalo</div>
+      <div class="flex gap-6">
+        <a href="https://www.linkedin.com/in/mthokozisi-nxumalo/" class="hover:text-gray-400 transition">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/mthoko-n" class="hover:text-gray-400 transition">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://x.com/mthoko__n" class="hover:text-gray-400 transition">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
     </div>
   </footer>
-  
-</body>
 
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Reveal on Scroll
+    const reveals = document.querySelectorAll('.reveal');
+    
+    const revealOnScroll = () => {
+      reveals.forEach(element => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < windowHeight - elementVisible) {
+          element.classList.add('active');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  </script>
+</body>
 </html>

@@ -258,14 +258,18 @@
       transform: translateY(0);
     }
 
-    /* Scroll Indicator */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: bounce 2s infinite;
-    }
+    
+   /* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+  cursor: pointer;
+  z-index: 10;
+  padding: 10px;
+}
 
     @keyframes bounce {
       0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
@@ -421,6 +425,42 @@
 
 .logo-link img {
   display: block;
+}
+
+
+/* Mobile Profile Image Popup */
+.mobile-profile-popup {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 0 30px rgba(255,255,255,0.5);
+  z-index: 999;
+  transition: transform 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mobile-profile-popup.active {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Scroll Indicator Button for Mobile */
+.scroll-indicator {
+  cursor: pointer;
+}
+
+@media (min-width: 769px) {
+  .mobile-profile-popup {
+    display: none;
+  }
 }
 
     @media (max-width: 768px) {
@@ -989,6 +1029,43 @@ function animateImage() {
 }
 
 animateImage();
+
+
+// Mobile Profile Image Toggle
+const scrollIndicator = document.querySelector('.scroll-indicator');
+let mobileProfileImage = null;
+
+// Create mobile profile image
+if (window.innerWidth <= 768) {
+  mobileProfileImage = document.createElement('img');
+  mobileProfileImage.src = 'Images/mthoko.png';
+  mobileProfileImage.alt = 'Mthokozisi Nxumalo';
+  mobileProfileImage.className = 'mobile-profile-popup';
+  document.body.appendChild(mobileProfileImage);
+
+  scrollIndicator.addEventListener('click', () => {
+    mobileProfileImage.classList.toggle('active');
+  });
+
+  // Close when clicking the image itself
+  mobileProfileImage.addEventListener('click', () => {
+    mobileProfileImage.classList.remove('active');
+  });
+
+  // Auto-close mobile profile image when scrolling away from hero
+// Auto-close mobile profile image when scrolling away from hero
+if (window.innerWidth <= 768 && mobileProfileImage) {
+  window.addEventListener('scroll', () => {
+    const heroSection = document.querySelector('.hero');
+    const heroRect = heroSection.getBoundingClientRect();
+    
+    // Close the image when 30% of hero section is scrolled past
+    if (heroRect.bottom < window.innerHeight * 0.7) {
+      mobileProfileImage.classList.remove('active');
+    }
+  });
+}
+}
   </script>
 </body>
 </html>
